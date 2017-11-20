@@ -1,0 +1,4 @@
+编译应用
+kotlinc ant.kt -include-runtime -d ant.jar
+-d 自定义编译器的输出名，可为目录，用来存放class文件，也可以是jar文件；
+-include-runtime 让jar文件包含kotlin运行时库从而可以直接运行

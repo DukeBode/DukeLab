@@ -1,0 +1,16 @@
+download SomePackage[==version]
+	下载扩展库的指定版本，不安装
+freeze[> requirements.txt]
+	以requirements的格式列出已安装模块
+list
+	列出当前已安装的所有模块
+install SomePackage[==version]
+	在线安装 SomePackage模块的指定版本
+install SomePackage.whl
+	通过whl文件离线安装扩展库
+install package1 package2 ...
+	依次在线安装 package1、package2等扩展模块
+install -r requirements.txt
+	安装requirements
+ install --upgrade SomePackage
+ uninstall SomePackage[==version]
