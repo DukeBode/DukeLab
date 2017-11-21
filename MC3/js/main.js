@@ -29,7 +29,7 @@ if (useragent.match(/MicroMessenger/i) != 'MicroMessenger'){
     $('#from').removeAttr('disabled');
     $('#share_to').html('生成贺卡');
     $('#share_to').on('click',function(){
-      window.location.href='http://www.mrpyq.com/holiday_wishes_201612/share.html?to='+t+'&f='+f+'&i='+i;
+      window.location.href='https://dukebode.github.io/DukeLab/MC3/share.html?to='+t+'&f='+f+'&i='+i;
     })
     $('#to').on('input',function(){
       t=encodeURI($('#to').val());
@@ -43,7 +43,7 @@ if (useragent.match(/MicroMessenger/i) != 'MicroMessenger'){
   title=$('#to').val()+',祝你圣诞快乐！';
   wx.onMenuShareAppMessage({//分享给朋友
       title: title, // 分享标题
-      link: 'http://www.mrpyq.com/holiday_wishes_201612/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
+      link: 'https://dukebode.github.io/DukeLab/MC3/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
       imgUrl: logo, // 分享图标
       desc: content,
       success: function () {
@@ -54,7 +54,7 @@ if (useragent.match(/MicroMessenger/i) != 'MicroMessenger'){
   });
   wx.onMenuShareTimeline({
       title: title, // 分享标题
-      link: 'http://www.mrpyq.com/holiday_wishes_201612/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
+      link: 'https://dukebode.github.io/DukeLab/MC3/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
       imgUrl: logo, // 分享图标
       success: function () { 
       },
@@ -65,7 +65,7 @@ if (useragent.match(/MicroMessenger/i) != 'MicroMessenger'){
   wx.onMenuShareQQ({
       title: title, // 分享标题
       desc: content, // 分享描述
-      link: 'http://www.mrpyq.com/holiday_wishes_201612/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
+      link: 'https://dukebode.github.io/DukeLab/MC3/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
       imgUrl: logo, // 分享图标
       success: function () { 
       },
@@ -76,7 +76,7 @@ if (useragent.match(/MicroMessenger/i) != 'MicroMessenger'){
   wx.onMenuShareWeibo({
       title: title, // 分享标题
       desc: content, // 分享描述
-      link: 'http://www.mrpyq.com/holiday_wishes_201612/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
+      link: 'https://dukebode.github.io/DukeLab/MC3/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
       imgUrl: logo, // 分享图标
       success: function () { 
       },
@@ -87,7 +87,7 @@ if (useragent.match(/MicroMessenger/i) != 'MicroMessenger'){
   wx.onMenuShareQZone({
       title: title, // 分享标题
       desc: content, // 分享描述
-      link: 'http://www.mrpyq.com/holiday_wishes_201612/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
+      link: 'https://dukebode.github.io/DukeLab/MC3/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
       imgUrl: logo, // 分享图标
       success: function () { 
       },
@@ -101,7 +101,7 @@ $('#from').on('input',function(){
   content='来自'+$('#from').val()+'的视频祝福';
   wx.onMenuShareAppMessage({//分享给朋友
       title: title, // 分享标题
-      link: 'http://www.mrpyq.com/holiday_wishes_201612/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
+      link: 'https://dukebode.github.io/DukeLab/MC3/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
       imgUrl: logo, // 分享图标
       desc: content,
       success: function () {
@@ -112,7 +112,7 @@ $('#from').on('input',function(){
   });
   wx.onMenuShareTimeline({
       title: title, // 分享标题
-      link: 'http://www.mrpyq.com/holiday_wishes_201612/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
+      link: 'https://dukebode.github.io/DukeLab/MC3/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
       imgUrl: logo, // 分享图标
       success: function () { 
       },
@@ -123,7 +123,7 @@ $('#from').on('input',function(){
   wx.onMenuShareQQ({
       title: title, // 分享标题
       desc: content, // 分享描述
-      link: 'http://www.mrpyq.com/holiday_wishes_201612/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
+      link: 'https://dukebode.github.io/DukeLab/MC3/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
       imgUrl: logo, // 分享图标
       success: function () { 
       },
@@ -134,7 +134,7 @@ $('#from').on('input',function(){
   wx.onMenuShareWeibo({
       title: title, // 分享标题
       desc: content, // 分享描述
-      link: 'http://www.mrpyq.com/holiday_wishes_201612/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
+      link: 'https://dukebode.github.io/DukeLab/MC3/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
       imgUrl: logo, // 分享图标
       success: function () { 
       },
@@ -145,7 +145,7 @@ $('#from').on('input',function(){
   wx.onMenuShareQZone({
       title: title, // 分享标题
       desc: content, // 分享描述
-      link: 'http://www.mrpyq.com/holiday_wishes_201612/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
+      link: 'https://dukebode.github.io/DukeLab/MC3/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
       imgUrl: logo, // 分享图标
       success: function () { 
       },
@@ -180,7 +180,7 @@ $.ajax({
             $('#from').removeAttr('disabled');
             wx.onMenuShareAppMessage({//分享给朋友
                 title: title, // 分享标题
-                link: 'http://www.mrpyq.com/holiday_wishes_201612/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
+                link: 'https://dukebode.github.io/DukeLab/MC3/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
                 imgUrl: logo, // 分享图标
                 desc: content,
                 success: function () {
@@ -192,7 +192,7 @@ $.ajax({
             });
             wx.onMenuShareTimeline({
                 title: title, // 分享标题
-                link: 'http://www.mrpyq.com/holiday_wishes_201612/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
+                link: 'https://dukebode.github.io/DukeLab/MC3/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
                 imgUrl: logo, // 分享图标
                 success: function () { 
                    _czc.push(["_trackEvent",'贺卡','分享']);
@@ -204,7 +204,7 @@ $.ajax({
             wx.onMenuShareQQ({
                 title: title, // 分享标题
                 desc: content, // 分享描述
-                link: 'http://www.mrpyq.com/holiday_wishes_201612/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
+                link: 'https://dukebode.github.io/DukeLab/MC3/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
                 imgUrl: logo, // 分享图标
                 success: function () { 
                    _czc.push(["_trackEvent",'贺卡','分享']);
@@ -216,7 +216,7 @@ $.ajax({
             wx.onMenuShareWeibo({
                 title: title, // 分享标题
                 desc: content, // 分享描述
-                link: 'http://www.mrpyq.com/holiday_wishes_201612/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
+                link: 'https://dukebode.github.io/DukeLab/MC3/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
                 imgUrl: logo, // 分享图标
                 success: function () { 
                    _czc.push(["_trackEvent",'贺卡','分享']);
@@ -228,7 +228,7 @@ $.ajax({
             wx.onMenuShareQZone({
                 title: title, // 分享标题
                 desc: content, // 分享描述
-                link: 'http://www.mrpyq.com/holiday_wishes_201612/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
+                link: 'https://dukebode.github.io/DukeLab/MC3/share.html?to='+t+'&f='+f+'&i='+i, // 分享链接
                 imgUrl: logo, // 分享图标
                 success: function () { 
                    _czc.push(["_trackEvent",'贺卡','分享']);
