@@ -7,7 +7,7 @@ $(document).ready(function(){
 	} 
 	$('#share').on('click',function(){
 		_czc.push(["_trackEvent",'贺卡','拆开分享']);
-		window.location.href='http://mp.weixin.qq.com/s/Qf5IQHkurDxJz7STowWd2A';
+		window.location.href='https://dukebode.github.io/DUKE-BLOG/activity/Merry_Christmas/';
 		// $('#main').css('display','none')
 	})
 	var url=decodeURI(window.location.href);
