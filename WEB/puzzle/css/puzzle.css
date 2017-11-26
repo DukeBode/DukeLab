@@ -3,21 +3,19 @@
 	margin: 0;
 	border: 0;
 }
-body{
-	position: fixed;
-}
-/* #container{
+/* body{
 	position: absolute;
-    width:inherit;
-	position: fixed;
 	margin: 0 auto;
-	border-radius: 1px; 
+} */
+#container{
+	display: block;
+	margin: 0 auto;
+	height: 20px;
+	/* position: fixed; */
+	/* border-radius: 1px;  */
 }
 #control{
-
-	position: absolute;
-	width: auto;
-}		 */
+}
 #control rowspan{
 	height: 25px;
 	font-size: 20px;
@@ -25,16 +23,14 @@ body{
 	margin-top: 10px;
 }
 #game{
-	position: absolute;
 	width: 100%;
 	height: 100%;
     border-radius: 5px;
-	display: inline-block;
 	background-color: #ffe171;
 }
 #game div{
-	position: absolute;
-	top: 100px;
+	position: relative;
+	display: inline-block;
 	width: 149px; 
 	height: 149px;
 	box-shadow: 1px 1px 2px #777;
@@ -43,11 +39,7 @@ body{
 	font-size: 150px;
 	/* line-height: 150px; */
 	cursor: pointer;
-	-webkit-transition: 0.3s;
-	   -moz-transition: 0.3s;
-	    -ms-transition: 0.3s;
-	     -o-transition: 0.3s;
-			transition: 0.3s;
+	transition: 0.3s;
 }
 
 #game div:hover{
@@ -79,8 +71,4 @@ body{
 	box-shadow: 2px 2px 5px #4c98f5;
 	text-align: center;
 	cursor: pointer;
-}
-#d1{
-	background-image: url(../img/1.jpg);
-	position: relative;
-}
+} 

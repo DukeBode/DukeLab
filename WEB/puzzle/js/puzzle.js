@@ -39,29 +39,30 @@ function layout() {
     }else{
         computer(h);
     }
-    show(document.body.clientWidth);
-
 }
 function mobile(w){
     document.getElementsByTagName("body")[1].style.width=w+"px";
+    document.getElementById("game").style.height=w+"px";
 }
 function computer(h){
-    alert(h);
-    document.getElementsByTagName("body")[0].style.width=0.6*h+"px";
+    // alert(h);
+    document.getElementById("container").style.width=0.6*h+"px";
+    document.getElementById("game").style.height=0.6*h+"px";
+    show(h)
+    // document.getElementsByTagName("body")[0].style.width=0.6*h+"px";
 }
 
 function show(W){
     var x=600;
     var y=100;
     // document.getElementById("game").getElementsByTagName("div").style.width=W/3+"px";
-    // document.getElementById("game").getElementsByTagName("div").style.height=W/3+"px";
-    alert(W);
-    for(var id_i=1 ;id_i<=9;id_i++){
+    // document.getElementById("game").getElementsByTagName("div").style.height=W/3+"px";*W/450-y
+    for(var id_i=1 ;id_i<9;id_i++){
         document.getElementById("d"+id_i).style.backgroundImage="url(img/1.jpg)";
-        document.getElementById("d"+id_i).style.backgroundPositionX=-posXY[id_i][0]*W/450-x+"px";
-        document.getElementById("d"+id_i).style.backgroundPositionY=-posXY[id_i][1]*W/450-y+"px";
-        document.getElementById("d"+id_i).style.left=posXY[id_i][0]+"px";
-        document.getElementById("d"+id_i).style.top=posXY[id_i][1]+"px";
+        document.getElementById("d"+id_i).style.backgroundPositionX=-posXY[id_i][0]-x+"px";
+        document.getElementById("d"+id_i).style.backgroundPositionY=-posXY[id_i][1]+"px";
+        document.getElementById("d"+id_i).style.margin.left=posXY[id_i][0]+"px";
+        document.getElementById("d"+id_i).style.margin.top=posXY[id_i][1]+"px";
     }
 }
 function move(key){
@@ -98,7 +99,7 @@ function random_d(){
         empty=KEY;
     }
     for(var id_i=1;id_i<9;id_i++){
-        document.getElementById("d"+id_i).style.left=posXY[d[id_i]][0]+"px";
+        document.getElementById("d"+id_i).style.margin.left=posXY[d[id_i]][0]+"px";
         document.getElementById("d"+id_i).style.top=posXY[d[id_i]][1]+"px";
     }
     random_num=0;
