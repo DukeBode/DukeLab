@@ -30,10 +30,8 @@ var posXY=new Array(
 var num=[0,2,3,2,3,4,3,2,3,2];
 var d=[0,1,2,3,4,5,6,7,8,9];;
 function layout() {
-    var w = document.body.clientWidth;
-    var h = document.body.clientHeight;
-     w = window.screen.availWidth;
-     h = window.screen.availHeight;
+    var w = window.innerWidth;
+    var h = window.innerHeight;
     if(h>w){
         mobile(w);
     }else{
@@ -46,8 +44,8 @@ function mobile(w){
 }
 function computer(h){
     // alert(h);
-    document.getElementById("container").style.width=0.6*h+"px";
-    document.getElementById("game").style.height=0.6*h+"px";
+    document.getElementById("container").style.width=h+"px";
+    document.getElementById("game").style.height=h+"px";
     show(h)
     // document.getElementsByTagName("body")[0].style.width=0.6*h+"px";
 }
