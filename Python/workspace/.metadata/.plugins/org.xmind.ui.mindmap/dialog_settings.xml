@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<section name="Workbench">
-	<section name="org.xmind.ui.export.html">
-	</section>
-	<section name="org.xmind.ui.export.image">
-		<item value="image/png" key="FORMAT"/>
-	</section>
-</section>
