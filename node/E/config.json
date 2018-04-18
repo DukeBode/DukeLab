@@ -1,0 +1,10 @@
+{
+    "token":"d3a8a8bd0e444d23db5ef5d3e10eb9b2",
+    "appID":"4822a34e331199a8fe",
+    "appScrect":"42c1f709a37b3302beb7205add951484f5586af7",
+    "appDomain":"http://mp.yiban.cn/",
+    "apiURl":{
+        "accessTokenApi":"%scgibin/oauth/token?grant_type=client_credentials&appid=$s&secret=%s",
+        "createMenu":"$scgibin/menu/create?access_token=%s"
+    }
+}

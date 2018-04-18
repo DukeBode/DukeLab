@@ -1,0 +1,54 @@
+Arguments: 
+  D:\Program Files\nodejs\node.exe D:\Program Files (x86)\Yarn\bin\yarn.js start
+
+PATH: 
+  D:\Program Files\Python36\Scripts\;D:\Program Files\Python36\;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;D:\Program Files (x86)\Yarn\bin\;D:\Program Files\nodejs\;D:\Program Files\Git\cmd;D:\Program Files\Git\mingw64\bin;D:\Program Files\Git\usr\bin;C:\Users\博德蝈蝈\AppData\Local\Microsoft\WindowsApps;C:\Users\博德蝈蝈\AppData\Local\Yarn\bin;C:\Users\博德蝈蝈\AppData\Roaming\npm;D:\Program Files\Microsoft VS Code\bin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  9.8.0
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  {
+    "name": "blog",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+      "start": "node ./bin/www"
+    },
+    "dependencies": {
+      "body-parser": "~1.18.2",
+      "cookie-parser": "~1.4.3",
+      "debug": "~2.6.9",
+      "ejs": "~2.5.7",
+      "express": "~4.15.5",
+      "morgan": "~1.9.0",
+      "serve-favicon": "~2.4.5"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Command failed.
+  Exit code: 1
+  Command: C:\WINDOWS\system32\cmd.exe
+  Arguments: /d /s /c node ./bin/www
+  Directory: E:\DukeLab\node\blog
+  Output:
+  
+      at ProcessTermError.MessageError (D:\Program Files (x86)\Yarn\lib\cli.js:186:110)
+      at new ProcessTermError (D:\Program Files (x86)\Yarn\lib\cli.js:226:113)
+      at ChildProcess.<anonymous> (D:\Program Files (x86)\Yarn\lib\cli.js:30281:17)
+      at ChildProcess.emit (events.js:180:13)
+      at maybeClose (internal/child_process.js:936:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:220:5)

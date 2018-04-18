@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
+    "express-generator": "^4.15.5",
+    "request": "^2.83.0"
+  },
+  "name": "node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
