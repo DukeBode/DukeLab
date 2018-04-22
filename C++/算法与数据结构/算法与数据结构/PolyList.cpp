@@ -1,132 +1,266 @@
-#include "PolyList.h"
+#include"PolyList.h"
 
-void PolyList::addnode()
+int PolyList::add(const PolyList &p, double *coefs, int *exps) const
 {
-	last = last->link = (Polynode *)malloc(sizeof(Polynode));
-	*last = node;
-	std::cout << node.coef << " " << node.exp << std::endl;
-	node.exp = 0;
+	int count = 0, i = 0, j = 0;
+	while (i<num_of_items && j<p.num_of_items)
+	{
+		if (pexps[i] == p.pexps[j])
+		{
+			if (pcoefs[i] != -p.pcoefs[j])
+			{
+				coefs[count] = pcoefs[i] + p.pcoefs[j];
+				exps[count] = pexps[i];
+				count++;
+			}
+			i++; j++;
+		}
+		else if (pexps[i] < p.pexps[j])
+		{
+			coefs[count] = pcoefs[i];
+			exps[count] = pexps[i];
+			count++; i++;
+		}
+		else
+		{
+			coefs[count] = p.pcoefs[j];
+			exps[count] = p.pexps[j];
+			count++; j++;
+		}
+	}
+	if (i<num_of_items)
+		while (i<num_of_items)
+		{
+			coefs[count] = pcoefs[i];
+			exps[count] = pexps[i];
+			count++; i++;
+		}
+	else
+		while (j<p.num_of_items)
+		{
+			coefs[count] = p.pcoefs[j];
+			exps[count] = p.pexps[j];
+			count++; j++;
+		}
+	return count;
 }
-
+int PolyList::subtract(const PolyList &p, double *coefs, int *exps) const
+{
+	int count = 0, i = 0, j = 0;
+	while (i<num_of_items && j<p.num_of_items)
+	{
+		if (pexps[i] == p.pexps[j])
+		{
+			if (pcoefs[i] != p.pcoefs[j])
+			{
+				coefs[count] = pcoefs[i] - p.pcoefs[j];
+				exps[count] = pexps[i];
+				count++;
+			}
+			i++; j++;
+		}
+		else if (pexps[i] < p.pexps[j])
+		{
+			coefs[count] = pcoefs[i];
+			exps[count] = pexps[i];
+			count++; i++;
+		}
+		else
+		{
+			coefs[count] = -p.pcoefs[j];
+			exps[count] = p.pexps[j];
+			count++; j++;
+		}
+	}
+	if (i<num_of_items)
+		while (i<num_of_items)
+		{
+			coefs[count] = pcoefs[i];
+			exps[count] = pexps[i];
+			count++; i++;
+		}
+	else
+		while (j<p.num_of_items)
+		{
+			coefs[count] = -p.pcoefs[j];
+			exps[count] = p.pexps[j];
+			count++; j++;
+		}
+	return count;
+}
 PolyList::PolyList()
 {
-	head = (Polynode *)malloc(sizeof(Polynode));
-	next = nullptr;
-	last = head;
+	pcoefs = nullptr;
+	pexps = nullptr;
+	num_of_items = 0;
 }
-void PolyList::str_poly()
+PolyList::PolyList(double coefs[], int exps[], int size)
 {
-	std::cout << "请输入一元多项式:例P(x)=ax^b+c" << std::endl;
-	getline(std::cin, list);
-	int i = list.length(), num = 0, k = 0;
-	//终止判断
-	while (i>0){
-		if (list[--i] == '=') { 
-			node.coef = num; //coef
-			this->addnode();
-			break;
-		}
-		if (list[i] == ' ')continue;
-		if (isdigit(list[i])) { 
-			num += pow(10, k++)*(list[i] - '0'); 
-		}else {
-			switch (list[i])
-			{
-			case '-':
-				num = -num;
-				k = 1;
-				while (list[i - k] == ' ')k++;
-				if (isalpha(list[i - k]) || list[i - k] == '^') {
-					node.exp = num;//exp
-					break;
-				}
-			case '+':
-				node.coef = num; 
-				this->addnode();
-				break;//+coef;
-			case '^':
-			default:
-				node.exp = num;//exp
-				//避重运算
-				while (!isdigit(list[i]))
-				if (i > 0)i--;i++;
-				break;	
-			}
-			k = num = 0; 
-		}
-	}
-}
-
-void PolyList::display()
-{
-	if (head->link)next = head->link;
-	char a='=';
-	do
+	num_of_items = size;
+	pcoefs = new double[num_of_items];
+	pexps = new int[num_of_items];
+	int i;
+	for (i = 0; i<num_of_items; i++)
 	{
-		if (next->coef > 1) { 
-			std::cout << a << next->coef; 
-			if (a = '=')a = '+';
-		}
-		else if (next->coef < -1)std::cout << next->coef;
-		else if (next->coef == -1)std::cout << '-';
-		std::cout << "x^";
-		if (next->exp < 0 )std::cout<< '(' << next->exp << ')';
-		else if (next->exp > 1)std::cout << next->exp;
-	} while (next->link == nullptr);
-}
-
-PolyList PolyList::add(Polynode node)
-{
-	next = (Polynode *)malloc(sizeof(Polynode));
-	*next = node;
-	return PolyList();
-}
-
-PolyList operator+(PolyList& one, PolyList& two)
-{
-	PolyList temp;
-	Polynode *p = one.head, *q = two.head, *t = temp.head;
-	while (p->link != nullptr) {
-		//t->link = (Polynode *)malloc(sizeof(Polynode));
-		//t = t->link;
-		if (q->link == nullptr) {
-			while (p->link != nullptr) {
-				t->link = (Polynode *)malloc(sizeof(Polynode));
-				t = t->link;
-				*t = *(p->link);
-				t->link = nullptr;
-			}
-			return temp;
-		}
-		if (p->exp > q->exp) {
-			*t = *p;
-		}
-		p = p->link; q = q->link;
-		if (p->exp == q->exp) {
-			t->coef = p->coef + q->coef;
-			t->exp = p->exp;
-		}
-		
+		pcoefs[i] = coefs[i];
+		pexps[i] = exps[i];
 	}
-	return PolyList();
-}
+	//按指数排序（冒泡排序） 
+	for (i = num_of_items; i>1; i--)
+	{
+		bool exchange = false;
+		for (int j = 1; j<i; j++)
+		{
+			if (pexps[j] < pexps[j - 1])
+			{ //交换pexps[j]和pexps[j-1] 
+				int temp1 = pexps[j];
+				pexps[j] = pexps[j - 1];
+				pexps[j - 1] = temp1;
+				//交换pcoefs[j]和pcoefs[j-1] 
+				double temp2 = pcoefs[j];
+				pcoefs[j] = pcoefs[j - 1];
+				pcoefs[j - 1] = temp2;
+				exchange = true;
 
-PolyList operator-(PolyList list1, PolyList list2)
+			}
+		}
+		if (!exchange) break;
+	}
+}
+PolyList::PolyList(const PolyList &p)
 {
-	return PolyList();
+	num_of_items = p.num_of_items;
+	pcoefs = new double[num_of_items];
+	pexps = new int[num_of_items];
+	for (int i = 0; i<num_of_items; i++)
+	{
+		pcoefs[i] = p.pcoefs[i];
+		pexps[i] = p.pexps[i];
+	}
 }
-
-PolyList operator*(PolyList list1, PolyList list2)
-{
-	return PolyList();
-}
-
-PolyList operator/(PolyList list1, PolyList list2)
-{
-	return PolyList();
-}
-
 PolyList::~PolyList()
 {
-	delete head, next, last;
+	delete[]pcoefs;
+	delete[]pexps;
+	pcoefs = nullptr;
+	pexps = nullptr;
+	num_of_items = 0;
+}
+PolyList& PolyList::operator=(const PolyList &p)
+{
+	delete[]pcoefs;
+	delete[]pexps;
+	num_of_items = p.num_of_items;
+	pcoefs = new double[num_of_items];
+	pexps = new int[num_of_items];
+	for (int i = 0; i<num_of_items; i++)
+	{
+		pcoefs[i] = p.pcoefs[i];
+		pexps[i] = p.pexps[i];
+	}
+	return *this;
+}
+int PolyList::degree() const
+{
+	if (num_of_items == 0)
+		return 0;
+	else
+		return pexps[num_of_items - 1];
+}
+double PolyList::evaluate(double x) const
+{
+	double sum = 0;
+	for (int i = 0; i<num_of_items; i++)
+	{
+		double temp = pcoefs[i];
+		for (int j = 0; j<pexps[i]; j++)
+			temp *= x;
+		sum += temp;
+	}
+	return sum;
+}
+bool PolyList::operator==(const PolyList &p) const
+{
+	if (num_of_items != p.num_of_items) return false;
+	for (int i = 0; i<num_of_items; i++)
+		if (pcoefs[i] != p.pcoefs[i] || pexps[i] != p.pexps[i])
+			return false;
+	return true;
+}
+bool PolyList::operator!=(const PolyList &p) const
+{
+	return !(*this == p);
+}
+PolyList PolyList::operator+(const PolyList &p) const
+{
+	double *coefs = new double[num_of_items + p.num_of_items];
+	int *exps = new int[num_of_items + p.num_of_items];
+	int count = add(p, coefs, exps);
+	PolyList temp(coefs, exps, count);
+	delete[]coefs;
+	delete[]exps;
+	return temp;
+}
+PolyList PolyList::operator-(const PolyList &p) const
+{
+	double *coefs = new double[num_of_items + p.num_of_items];
+	int *exps = new int[num_of_items + p.num_of_items];
+	int count = subtract(p, coefs, exps);
+	PolyList temp(coefs, exps, count);
+	delete[]coefs;
+	delete[]exps;
+	return temp;
+}
+PolyList PolyList::operator*(const PolyList &p) const
+{
+	PolyList sum, temp = *this;
+	for (int i = 0; i<p.num_of_items; i++)
+	{
+		for (int j = 0; j<num_of_items; j++)
+		{
+			temp.pcoefs[j] = pcoefs[j] * p.pcoefs[i];
+			temp.pexps[j] = pexps[j] + p.pexps[i];
+		}
+		sum += temp;
+	}
+	return sum;
+}
+PolyList &PolyList::operator+=(const PolyList &p)
+{
+	double *coefs = new double[num_of_items + p.num_of_items];
+	int *exps = new int[num_of_items + p.num_of_items];
+	int count = add(p, coefs, exps);
+	delete[]pcoefs;
+	delete[]pexps;
+	pcoefs = coefs; //有多余的空间，实际的项数由count决定。 
+	pexps = exps; //同上。 
+	num_of_items = count;
+	return *this;
+}
+PolyList &PolyList::operator-=(const PolyList &p)
+{
+	double *coefs = new double[num_of_items + p.num_of_items];
+	int *exps = new int[num_of_items + p.num_of_items];
+	int count = subtract(p, coefs, exps);
+	delete[]pcoefs;
+	delete[]pexps;
+	pcoefs = coefs; //有多余的空间，实际的项数由count决定。 
+	pexps = exps; //同上。 
+	num_of_items = count;
+	return *this;
+}
+PolyList &PolyList::operator*=(const PolyList &p)
+{
+	PolyList sum, temp = *this;
+	for (int i = 0; i<p.num_of_items; i++)
+	{
+		for (int j = 0; j<num_of_items; j++)
+		{
+			temp.pcoefs[j] = pcoefs[j] * p.pcoefs[i];
+			temp.pexps[j] = pexps[j] + p.pexps[i];
+		}
+		sum += temp;
+	}
+	*this = sum;
+	return *this;
 }

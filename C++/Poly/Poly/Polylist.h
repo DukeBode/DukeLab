@@ -29,7 +29,7 @@ public:
 	Polylist operator-();
 	Polylist operator*(Polylist p);
 	friend Polylist operator+(Polylist p1,Polylist p2);
-	friend Polylist operator-(Polylist p1, Polylist p2);
+	//friend Polylist operator-(Polylist p1, Polylist p2);
 	friend Polylist operator*(Polylist p1, Polylist p2);
 };
 

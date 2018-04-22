@@ -118,6 +118,8 @@ void Polylist::clear()
 
 Polylist Polylist::operator+(Polylist p)
 {
+	Polylist temp;
+
 	return Polylist();
 }
 
