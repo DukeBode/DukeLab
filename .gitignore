@@ -260,5 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /php/php/nbproject/private/
-Python/dukestudio/web/venv/Lib/site-packages/pytz/zoneinfo/Australia/ACT
 Python/dukestudio/web/venv/
