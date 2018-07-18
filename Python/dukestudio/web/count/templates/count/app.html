@@ -1,0 +1,309 @@
+
+{% extends 'count/base.html' %}
+
+{% block head %}
+<title>轻应用</title>
+<style>
+
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+	float: left;
+	padding: 0 10px;
+	width: 100%;
+	box-sizing: border-box;
+}
+@media all and (min-width:768px){.col-sm-6 {width: 50%;}}
+@media all and (min-width:1024px){.col-md-3 {width: 25%;}}
+.hunter-main .hunter-item {
+	margin-bottom: 30px;
+}
+@media all and (min-width:768px){
+.hunter-main .hunter-item {
+	margin-bottom: 70px;
+}}
+.row {
+	margin: 0 -10px;
+	box-sizing: border-box;
+}
+.container-fluid, .container {
+	padding: 0 10px;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+.container {
+	max-width: 1260px;
+}
+@media all and (min-width:1300px){
+.container {
+	padding: 0;
+}}
+.hunter-main {
+	background: #f7f7f7;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 60px 0 0;
+	border-bottom: 1px solid #f7f7f7;
+}
+#container {
+	position: relative;
+}
+body {
+	margin: 0;
+	font: 0.75em/1.75em 'Arial', Helvetica, Arial, "Microsoft Yahei", sans-serif;
+	color: #525252;
+	background: #fff;
+	padding: 0;
+	position: relative;
+}
+@media all and (min-width:768px){
+body {
+	padding-top: 58px;
+	background-position: center 55px;
+	background-repeat: no-repeat;
+	background-size: auto;
+}}
+@media all and (max-width:1199px){
+body {
+	overflow-x: hidden;
+}}
+@media all and (max-width:767px){
+body {
+	padding-top: 36px;
+}}
+@media all and (max-width:767px){
+body {
+	background-image: none !important;
+}}
+
+html {
+	font-size: 1em;
+	overflow-y: scroll;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	position: relative;
+}
+html {
+	font-size: 16px;
+}
+.hunter-main .item-cont {
+	border-radius: 5px;
+	overflow: hidden;
+	background: #fff;
+	box-shadow: 0px 3px 50px #ddd;
+}
+@media all and (min-width:768px){
+.hunter-main .item-cont {
+	box-shadow: 0px 0px 2px rgba(0,0,0,0.1);
+}}
+@media all and (min-width:768px){
+.hunter-main .item-cont:hover {
+	box-shadow: 0px 3px 50px #ddd;
+}}
+a, a:visited {
+	color: #0da4d3;
+	text-decoration: none;
+}
+a, a img, input, .featured-post .byline {
+	-webkit-transition: all 0.18s ease-out;
+	-moz-transition: all 0.18s ease-out;
+	-ms-transition: all 0.18s ease-out;
+	-o-transition: all 0.18s ease-out;
+	transition: all 0.18s ease-out;
+}
+a {
+	color: #606060;
+}
+a:hover {
+	text-decoration: none;
+	color: #000;
+}
+a:focus {
+	outline: none;
+}
+a:hover, a:active {
+	outline: 0;
+}
+a:hover, .comment-meta a, .comment-meta a:visited, .page-template-front .hentry .entry-title a:hover, .archive .hentry .entry-title a:hover, .search .hentry .entry-title a:hover {
+	border-color: #0da4d3;
+}
+a:hover, a:focus {
+	color: #000;
+}
+.hunter-main .item-txt {
+	position: relative;
+	width: 100%;
+}
+@media all and (min-width:768px){
+.hunter-main .item-txt {
+	height: 0px;
+	padding-top: 11.29%;
+}}
+@media all and (min-width:1024px){
+.hunter-main .col-md-3 .item-txt {
+	padding-top: 57.8%;
+}}
+@media all and (min-width:1300px){
+.hunter-main .col-md-3 .item-txt {
+	padding-top: 56.66%;
+}}
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Abel","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	margin: 0 0 15px 0;
+	color: #333;
+	line-height: 1.3em;
+}
+h2 {
+	font-size: 2em;
+}
+h4 {
+	font-size: 1.5em;
+}
+h1, h2, h3, h4, h5, h6, dl dt, blockquote, blockquote blockquote blockquote, #site-title, #menu-primary li a {
+	font-family: Arial,"Microsoft Yahei",sans-serif;
+}
+.hunter-main .item-txt h2 {
+	line-height: 1.5;
+	font-size: 16px;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0 20px;
+	margin-top: 10px;
+}
+@media all and (min-width:768px){
+.hunter-main .item-txt h2 {
+	margin-top: -0.75em;
+	position: absolute;
+	left: 0px;
+	top: 50%;
+	height: 1.5em;
+	overflow: hidden;
+}}
+@media all and (min-width:1024px){
+.hunter-main .col-md-3 .item-txt h2 {
+	top: 20px;
+	margin-top: 0px;
+	height: auto;
+	max-height: 3em;
+}}
+.hunter-main .item-txt h4 {
+	font-size: 12px;
+	padding: 0 20px;
+	width: 100%;
+	box-sizing: border-box;
+	color: #777;
+	position: relative;
+}
+@media all and (min-width:1024px){
+.hunter-main .col-md-3 .item-txt h4 {
+	position: absolute;
+	display: block;
+	left: 0px;
+	bottom: 20px;
+}}
+.author, .published, .category, .edit {
+	font-style: normal;
+}
+.hunter-main .item-txt h4 .author {
+	position: absolute;
+	right: 20px;
+	top: 0px;
+}
+.hunter-main .item-txt h4 .author i {
+	font-style: normal;
+}
+@media all and (min-width:768px){
+.hunter-main .item-txt h4 .author i {
+	display: none;
+}}
+.hunter-main .item-cont h4 a {
+	color: #777;
+}
+.hunter-main .item-txt h4 .author a {
+	display: none;
+}
+@media all and (min-width:768px){
+.hunter-main .item-txt h4 .author a {
+	display: inline;
+}}
+.hunter-main .item-cont h2 a {
+	color: #393939;
+}
+.hunter-main .thumb {
+	width: 100%;
+	height: 0px;
+	padding-top: 66.66%;
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+@media all and (min-width:1024px){
+.hunter-main .thumb {
+	padding-top: 66.66%;
+}}
+.hunter-main .thumb .btn {
+	background: #fff;
+	border: 1px solid #eaeaea;
+	color: #555;
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 4px;
+	opacity: 0.7;
+	cursor: pointer;
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	z-index: 10;
+}
+em, cite {
+	font-style: italic;
+}
+.btn em {
+	font-style: normal;
+}
+
+</style>
+{% endblock head %}
+{% block main %}
+
+<div class="archive tax-topic term-3399">
+    <div id="container">
+        <div class="hunter-main">
+            <div class="container">
+                <div class="hunter-items row">
+                    {% if apps %}
+                    {%for app in apps%}
+                    <div class="hunter-item col-sm-6 col-md-3" >
+                        <div class="item-cont">
+                            <a href={{app.url}} target="_blank">
+                                <div class="thumb " style="background-image:url('{{app.logo}}');">
+                                    <!--<span class="btn zan" data-id="271224"><i class="icon-like"></i> <em>132</em></span>-->
+                                </div>
+                            </a>
+                            <div class="item-txt">
+                                <h2><a href={{app.url}} target="_blank">{{app.name}}</a></h2>
+                                <h4>
+                                    <p>{{app.intro}}</p>
+                                    <span class="product">易班APP</span>
+                                    <span class="author"><i>{{app.update}}</i><a href="https://www.yiban.cn" target="_blank">{{app.uName}}</a></span>
+
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'html/nav.html' %}
+{% include 'html/footer.html' %}
+{% comment %}
+多行注释
+{% endcomment %}
+
+{% endblock main %}

@@ -1,0 +1,10 @@
+<footer>
+    <p><a href="http://www.dukestudio.tech" id="footer">Copyright &copy; 2010- Duke Studio</a></p>
+    <p><a href="http://www.miitbeian.gov.cn/">晋ICP备18006078号</a></p>
+</footer>
+<script>
+    let now = new Date();
+    copyright = document.getElementById("footer");
+    copyright.href="http://"+document.domain;
+    copyright.innerHTML="Copyright &copy; 2010-"+now.getFullYear()+"Duke Studio";
+</script>

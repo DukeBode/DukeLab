@@ -117,10 +117,12 @@
   <ItemGroup>
     <ClCompile Include="0228_Magic_Square_v1.0.c" />
     <ClCompile Include="0228_Magic_Square_v1.0.cpp" />
+    <ClCompile Include="base.cpp" />
     <ClCompile Include="binNode.cpp" />
     <ClCompile Include="BinTree.cpp" />
     <ClCompile Include="CLinkList.cpp" />
     <ClCompile Include="PolyList.cpp" />
+    <ClCompile Include="Random.cpp" />
     <ClCompile Include="text.c" />
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +130,7 @@
     <ClInclude Include="BinTree.h" />
     <ClInclude Include="CLinkList.h" />
     <ClInclude Include="PolyList.h" />
+    <ClInclude Include="Random.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

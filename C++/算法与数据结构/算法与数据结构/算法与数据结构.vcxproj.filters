@@ -36,6 +36,12 @@
     <ClCompile Include="BinTree.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Random.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="base.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PolyList.h">
@@ -48,6 +54,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="BinTree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
