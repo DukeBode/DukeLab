@@ -1,8 +1,15 @@
-# POWERSHELL 脚本执行权限
+---
+title: PowerShell 脚本执行权限
+author: Duke
+authorURL: http://weibo.com/newggbode
+---
+
 - Restricted——默认的设置， 不允许任何script运行
 - AllSigned——只能运行经过数字证书签名的script
 - RemoteSigned——运行本地的script不需要数字签名，但是运行从网络上下载的script就必须要有- 数字签名
 - Unrestricted——允许所有的script运行
+
+<!--truncate-->
 
 windows默认不允许任何脚本运行，你可以使用"Set-ExecutionPolicy"cmdlet来改变的你PowerShell环境。例如，你可以使用如下命令让PowerShell运行在无限制的环境之下：
 ```powershell

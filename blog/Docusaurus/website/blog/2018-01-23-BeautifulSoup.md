@@ -1,9 +1,15 @@
-# Beautiful Soup
+---
+title: Beautiful Soup
+author: Duke
+authorURL: http://weibo.com/newggbode
+---
 ## 1. Beautiful Soup的简介
 简单来说，Beautiful Soup是python的一个库，最主要的功能是从网页抓取数据。官方解释如下：
 > Beautiful Soup提供一些简单的、python式的函数用来处理导航、搜索、修改分析树等功能。它是一个工具箱，通过解析文档为用户提供需要抓取的数据，因为简单，所以不需要多少代码就可以写出一个完整的应用程序。
 Beautiful Soup自动将输入文档转换为Unicode编码，输出文档转换为utf-8编码。你不需要考虑编码方式，除非文档没有指定一个编码方式，这时，Beautiful Soup就不能自动识别编码方式了。然后，你仅仅需要说明一下原始编码方式就可以了。
 Beautiful Soup已成为和lxml、html6lib一样出色的python解释器，为用户灵活地提供不同的解析策略或强劲的速度。
+
+<!--truncate-->
 
 废话不多说，我们来试一下吧~
 2. Beautiful Soup 安装
@@ -74,12 +80,6 @@ soup = BeautifulSoup(html)
 另外，我们还可以用本地 HTML 文件来创建对象，例如
 
 
-
-
-
-
-
-
 1
 soup = BeautifulSoup(open('index.html'))
 上面这句代码便是将本地 index.html 文件打开，用它来创建 soup 对象
@@ -109,20 +109,8 @@ Tag 是什么？通俗点讲就是 HTML 中的一个个标签，例如
 
 
 
-
-
-
-
-
 1
 <title>The Dormouse's story</title>
-
-
-
-
-
-
-
 
 
 1
@@ -131,23 +119,10 @@ Tag 是什么？通俗点讲就是 HTML 中的一个个标签，例如
 下面每一段代码中注释部分即为运行结果
 
 
-
-
-
-
-
-
 1
 2
 print soup.title
 #<title>The Dormouse's story</title>
-
-
-
-
-
-
-
 
 
 1
@@ -158,40 +133,15 @@ print soup.head
 
 
 
-
-
-
-
-
-1
-2
 print soup.a
 #<a class="sister" href="http://example.com/elsie" id="link1"><!-- Elsie --></a>
 
-
-
-
-
-
-
-
-
-1
-2
 print soup.p
 #<p class="title" name="dromouse"><b>The Dormouse's story</b></p>
 我们可以利用 soup加标签名轻松地获取这些标签的内容，是不是感觉比正则表达式方便多了？不过有一点是，它查找的是在所有内容中的第一个符合要求的标签，如果要查询所有的标签，我们在后面进行介绍。
 我们可以验证一下这些对象的类型
 
 
-
-
-
-
-
-
-1
-2
 print type(soup.a)
 #<class 'bs4.element.Tag'>
 对于 Tag，它有两个重要的属性，是 name 和 attrs，下面我们分别来感受一下
@@ -199,15 +149,6 @@ name
 
 
 
-
-
-
-
-
-1
-2
-3
-4
 print soup.name
 print soup.head.name
 #[document]
@@ -217,69 +158,25 @@ attrs
 
 
 
-
-
-
-
-
-1
 2
 print soup.p.attrs
 #{'class': ['title'], 'name': 'dromouse'}
 在这里，我们把 p 标签的所有属性打印输出了出来，得到的类型是一个字典。
 如果我们想要单独获取某个属性，可以这样，例如我们获取它的 class 叫什么
 
-
-
-
-
-
-
-
-1
-2
 print soup.p['class']
 #['title']
 还可以这样，利用get方法，传入属性的名称，二者是等价的
 
-
-
-
-
-
-
-
-1
-2
 print soup.p.get('class')
 #['title']
 我们可以对这些属性和内容等等进行修改，例如
 
-
-
-
-
-
-
-
-1
-2
-3
 soup.p['class']="newClass"
 print soup.p
 #<p class="newClass" name="dromouse"><b>The Dormouse's story</b></p>
 还可以对这个属性进行删除，例如
 
-
-
-
-
-
-
-
-1
-2
-3
 del soup.p['class']
 print soup.p
 #<p name="dromouse"><b>The Dormouse's story</b></p>
@@ -287,48 +184,17 @@ print soup.p
 （2）NavigableString
 既然我们已经得到了标签的内容，那么问题来了，我们要想获取标签内部的文字怎么办呢？很简单，用 .string 即可，例如
 
-
-
-
-
-
-
-
-1
-2
 print soup.p.string
 #The Dormouse's story
 这样我们就轻松获取到了标签里面的内容，想想如果用正则表达式要多麻烦。它的类型是一个 NavigableString，翻译过来叫 可以遍历的字符串，不过我们最好还是称它英文名字吧。
 来检查一下它的类型
 
-
-
-
-
-
-
-
-1
-2
 print type(soup.p.string)
 #<class 'bs4.element.NavigableString'>
 
 （3）BeautifulSoup
 BeautifulSoup 对象表示的是一个文档的全部内容.大部分时候,可以把它当作 Tag 对象，是一个特殊的 Tag，我们可以分别获取它的类型，名称，以及属性来感受一下
 
-
-
-
-
-
-
-
-1
-2
-3
-4
-5
-6
 print type(soup.name)
 #<type 'unicode'>
 print soup.name 
@@ -340,48 +206,18 @@ print soup.attrs
 Comment 对象是一个特殊类型的 NavigableString 对象，其实输出的内容仍然不包括注释符号，但是如果不好好处理它，可能会对我们的文本处理造成意想不到的麻烦。
 我们找一个带注释的标签
 
-
-
-
-
-
-
-
-1
-2
-3
 print soup.a
 print soup.a.string
 print type(soup.a.string)
 
 运行结果如下
 
-
-
-
-
-
-
-
-
-1
-2
-3
 <a class="sister" href="http://example.com/elsie" id="link1"><!-- Elsie --></a>
  Elsie 
 <class 'bs4.element.Comment'>
 a 标签里的内容实际上是注释，但是如果我们利用 .string 来输出它的内容，我们发现它已经把注释符号去掉了，所以这可能会给我们带来不必要的麻烦。
 另外我们打印输出下它的类型，发现它是一个 Comment 类型，所以，我们在使用前最好做一下判断，判断代码如下
 
-
-
-
-
-
-
-
-1
-2
 if type(soup.a.string)==bs4.element.Comment:
     print soup.a.string
 上面的代码中，我们首先判断了它的类型，是否为 Comment 类型，然后再进行其他操作，如打印输出。
@@ -391,72 +227,23 @@ if type(soup.a.string)==bs4.element.Comment:
 .contents
 tag 的 .content 属性可以将tag的子节点以列表的方式输出
 
-
-
-
-
-
-
-
-1
-2
 print soup.head.contents 
 #[<title>The Dormouse's story</title>]
 输出方式为列表，我们可以用列表索引来获取它的某一个元素
 
-
-
-
-
-
-
-
-1
-2
 print soup.head.contents[0]
 #<title>The Dormouse's story</title>
 .children
 它返回的不是一个 list，不过我们可以通过遍历获取所有子节点。
 我们打印输出 .children 看一下，可以发现它是一个 list 生成器对象
 
-
-
-
-
-
-
-
-1
-2
 print soup.head.children
 #<listiterator object at 0x7f71457f5710>
 我们怎样获得里面的内容呢？很简单，遍历一下就好了，代码及结果如下
 
-
-
-
-
-
-
-
-1
-2
 for child in  soup.body.children:
     print child
 
-
-
-
-
-
-
-
-
-1
-2
-3
-4
-5
 <p class="title" name="dromouse"><b>The Dormouse's story</b></p>
  
 <p class="story">Once upon a time there were three little sisters; and their names were
@@ -468,31 +255,10 @@ for child in  soup.body.children:
 .descendants
 .contents 和 .children 属性仅包含tag的直接子节点，.descendants 属性可以对所有tag的子孙节点进行递归循环，和 children类似，我们也需要遍历获取其中的内容。
 
-
-
-
-
-
-
-
-1
-2
 for child in soup.descendants:
     print child
 运行结果如下，可以发现，所有的节点都被打印出来了，先生最外层的 HTML标签，其次从 head 标签一个个剥离，以此类推。
 
-
-
-
-
-
-
-
-1
-2
-3
-4
-5
 <html><head><title>The Dormouse's story</title></head>
 <body>
 <p class="title" name="dromouse"><b>The Dormouse's story</b></p>
@@ -1182,97 +948,33 @@ print soup.select('.sister')
 
 （3）通过 id 名查找
 
-
-
-
-
-
-
-
-
-1
-2
 print soup.select('#link1')
 #[<a class="sister" href="http://example.com/elsie" id="link1"><!-- Elsie --></a>]
 
 （4）组合查找
 组合查找即和写 class 文件时，标签名与类名、id名进行的组合原理是一样的，例如查找 p 标签中，id 等于 link1的内容，二者需要用空格分开
 
-
-
-
-
-
-
-
-1
-2
 print soup.select('p #link1')
 #[<a class="sister" href="http://example.com/elsie" id="link1"><!-- Elsie --></a>]
 直接子标签查找
 
-
-
-
-
-
-
-
-1
-2
 print soup.select("head > title")
 #[<title>The Dormouse's story</title>]
 
 （5）属性查找
 查找时还可以加入属性元素，属性需要用中括号括起来，注意属性和标签属于同一节点，所以中间不能加空格，否则会无法匹配到。
 
-
-
-
-
-
-
-
-1
-2
 print soup.select('a[class="sister"]')
 #[<a class="sister" href="http://example.com/elsie" id="link1"><!-- Elsie --></a>, <a class="sister" href="http://example.com/lacie" id="link2">Lacie</a>, <a class="sister" href="http://example.com/tillie" id="link3">Tillie</a>]
 
-
-
-
-
-
-
-
-
-1
-2
 print soup.select('a[href="http://example.com/elsie"]')
 #[<a class="sister" href="http://example.com/elsie" id="link1"><!-- Elsie --></a>]
 同样，属性仍然可以与上述查找方式组合，不在同一节点的空格隔开，同一节点的不加空格
 
-
-
-
-
-
-
-
-1
-2
 print soup.select('p a[href="http://example.com/elsie"]')
 #[<a class="sister" href="http://example.com/elsie" id="link1"><!-- Elsie --></a>]
 以上的 select 方法返回的结果都是列表形式，可以遍历形式输出，然后用 get_text() 方法来获取它的内容。
 
-
-
-1
-2
-3
-4
-5
-6
 ```python
 soup = BeautifulSoup(html, 'lxml')
 print(type(soup.select('title')))

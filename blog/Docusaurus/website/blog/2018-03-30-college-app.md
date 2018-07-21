@@ -1,3 +1,9 @@
+---
+title: 易月动态
+author: Duke
+authorURL: http://weibo.com/newggbode
+---
+
 # 特色学院轻应用
 
 1. 导出上月1日至本月1日的轻应用数据
