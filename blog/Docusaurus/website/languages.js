@@ -7,7 +7,7 @@
 
 const languages = [
   {
-    enabled: true,
+    enabled: false,
     name: 'English',
     tag: 'en',
   },

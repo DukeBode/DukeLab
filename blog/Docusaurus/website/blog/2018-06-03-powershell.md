@@ -7,4 +7,5 @@ authorURL: http://weibo.com/newggbode
 - 变量名不区分大小写，可包含数字、字母和下划线
 - 预定义变量
 - $null（空值）$true（真值为真）$false（真值为假）$_（当前处理的元素）
+
 <!--truncate-->
