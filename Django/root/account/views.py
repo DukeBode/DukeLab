@@ -26,7 +26,7 @@ def back(request, website):
             # except:
             #     demo = User.objects.create_user(username=data['userid'], password=data['access_token'])
             # demo.save()
-            user = auth.authenticate(request, username=data['userid'], password=data['access_token'])
+            user = auth.authenticate(request, username=data['userid'])
             auth.login(request, user)
             # app.letter({
             #     'access_token': data['access_token'],
