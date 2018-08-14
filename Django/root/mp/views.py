@@ -26,3 +26,4 @@ def validate(request):
             return HttpResponse(request.GET['echostr'])
     return HttpResponse('')
 
+# @login_required(login_url='/yiban/before_bind?op=yiban')
