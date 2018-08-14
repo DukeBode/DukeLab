@@ -8,13 +8,6 @@ def before_bind(request):
     if request.method == 'GET':
         try:
             website = request.GET['op']
-            # try:
-            #     state = parse.quote(request.GET['next'])
-            #     state = request.GET['next']
-            #     bind_option[website] = app.authorize(state=state)
-            #     print(state)
-            # except KeyError:
-            #     pass
             try:
                 HttpResponseRedirect(bind_option[website])
             except KeyError:
@@ -23,7 +16,7 @@ def before_bind(request):
             pass
     return HttpResponseRedirect(bind_option['yiban'])
 
-def back(request):
+def back(request, website):
     if request.method == 'GET':
         try:
             data = app.access_token(request.GET['code'])
