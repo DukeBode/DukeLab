@@ -7,11 +7,11 @@ articleHot_url = 'https://www.yiban.cn/forum/article/hotArticleAjax'
 # 回复
 reply_url = 'https://www.yiban.cn/forum/reply/listAjax'
 # 快搭应用数据统计
-'https://q.yiban.cn/audit/stat?access_token=84bf898f8e442e1c812e6b5aac531f12'
+'https://q.yiban.cn/audit/stat'
 # 小应用审查管理
-'https://q.yiban.cn/audit/index?access_token=84bf898f8e442e1c812e6b5aac531f12'
+'https://q.yiban.cn/audit/index'
 # 主页管理
-'http://www.yiban.cn/manage/ad/index?access_token=84bf898f8e442e1c812e6b5aac531f12'
+'http://www.yiban.cn/manage/ad/index'
 
 post = dict(channel_id=55461, group_id=0, my=0, need_notice=0, orderby='updateTime', page=1, puid=5189448,
             Sections_id=-1, size=20)
@@ -25,3 +25,12 @@ state = url.status_code
 if state == 200:
     url_content = url.json()
     print(url_content)
+
+    
+def url_data(web_url):
+    url = requests.get(web_url)
+    state = url.status_code
+    if state == 200:
+        url.encoding = 'utf-8'
+        web_content = BeautifulSoup(url.text, 'html.parser')
+        print(web_content.prettify())

@@ -1,0 +1,260 @@
+{% load static %}
+<html>
+
+<head>
+	<title>友在易班</title>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" type="image/png" href="{% static 'img/logo.png' %}">
+	<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+	<script src="{% static 'js/jquery-qrcode-0.14.0.min.js' %}"></script>
+	<style>
+		* {
+			scrollbar-arrow-color: #000;
+			scrollbar-face-color: rgba(229, 229, 229, 0.9);
+			scrollbar-shadow-color: #bbb;
+			scrollbar-3dlight-color: #fff;
+			scrollbar-highlight-color: #fff;
+			scrollbar-track-color: #ccc;
+			scrollbar-dark-shadow-color: red;
+		}
+
+		*,
+		*::before,
+		*::after {
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		article,
+		aside,
+		details,
+		figcaption,
+		figure,
+		footer,
+		header,
+		hgroup,
+		main,
+		menu,
+		nav,
+		section,
+		summary {
+			display: block;
+		}
+
+		/* @media all and (min-width:1366px) */
+
+		.yiban-app {
+			display: block;
+		}
+
+		/* @media all and (min-width:1366px) */
+
+		.others-fixed {
+			position: absolute;
+			top: 570px;
+			right: 0px;
+			margin-top: 0px;
+		}
+
+		.grid {
+			display: block;
+		}
+
+		.container {
+			position: relative;
+			margin: 0 auto;
+		}
+
+		/* @media all and (min-width:1366px) */
+
+		body {
+			margin: 0;
+		}
+
+		body {
+			font-family: "Microsoft YaHei", "STHeiti", Helvetica, Arial, sans-serif;
+			line-height: 1.4285;
+			background: #fff;
+			color: #517290;
+			font-size: 13px;
+		}
+
+
+		/* @media all and (min-width:1366px) */
+
+
+		html {
+			font-family: sans-serif;
+			-ms-text-size-adjust: 100%;
+			-webkit-text-size-adjust: 100%;
+		}
+
+		html {
+			font-size: 62.5%;
+			-webkit-tap-highlight-color: transparent;
+		}
+
+		.aside-head {
+			padding: 0 0 10px 15px;
+			margin-bottom: 10px;
+			color: #fff;
+		}
+
+		.aside-head.blue {
+			background-color: #00a5ed;
+		}
+
+		.aside-body {
+    position: relative;
+    top: 10vh;
+			text-align: center;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p,
+		ol,
+		ul,
+		li,
+		dl,
+		dd,
+		form,
+		fieldset,
+		figure {
+			margin: 0;
+			padding: 0;
+			border: 0;
+		}
+
+		.topic-item,
+		.qr-code-tips,
+		.data-item {
+			border-bottom: 1px dashed #e5e7ea;
+		}
+
+		.qr-code-tips {
+			letter-spacing: 1px;
+			line-height: 1;
+			padding: 14px 0;
+		}
+
+		.aside-head h1 {
+			height: 9vh;
+			padding: 0.8vh 0px 0px 2vh;
+			border-left: 0.6vh solid;
+			line-height: 1.8;
+		}
+
+		/* @media all and (min-width:1366px) */
+
+		.aside-head.blue h1 {
+			border-color: #b3e5fc;
+		}
+
+		em,
+		address {
+			font-style: normal;
+		}
+
+		.aside-head h1 em {
+			display: block;
+			font-family: "yiban_en";
+			font-size: 2vh;
+			line-height: 1;
+			text-transform: uppercase;
+		}
+
+		.aside-head.blue em {
+			color: #b3e5fc;
+		}
+		canvas{
+			width:50vh;
+		}
+		#msg{
+			display:none;
+		}
+		p{
+			font-size:3vh;
+		}
+		h1{
+			font-size:3vh;
+		}
+	</style>
+	<script>
+		(function () {
+			'use strict';
+
+			var jq = window.jQuery;
+
+			function updateQrCode() {
+
+				var options = {
+					render: 'image', //设置渲染方式，有table和canvas，使用canvas方式渲染性能相对来说比较好
+					minVersion: 1, // version range somewhere in 1 .. 40
+					maxVersion: 40,
+					ecLevel: 'Q', //识别度  'L', 'M', 'Q' or 'H'
+					left: 0,
+					top: 0,
+					size: 500, //尺寸
+					fill: '#000', //二维码颜色
+					background: '#FFFFFF', //背景色
+					text: '{{data}}', //二维码内容
+					radius: 0.5, // 0.0 .. 0.5
+					quiet: 2, //边距
+
+					// modes
+					// 0: normal
+					// 1: label strip
+					// 2: label box
+					// 3: image strip
+					// 4: image box
+					mode: 2,
+					mSize: 0.1, //图片大小
+					mPosX: 0.5,
+					mPosY: 0.5,
+
+					label: '友在易班',
+					fontname: 'sans',
+					fontcolor: '#000',
+					image: $("#img-buffer")[0]
+				};
+
+				jq('#container').empty().qrcode(options);
+			}
+
+			jq(updateQrCode);
+		}());
+	</script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="grid">
+			<section class="yiban-app">
+				<div class="aside-head blue">
+					<h1>友 在 易 班 
+						<em> yiban friends</em>
+					</h1>
+				</div>
+				<div class="aside-body">
+					<div class="qr-code lazy" id="container"></div>
+					<p>{{ info.yb_schoolname }}-{{ info.yb_username }}</p>
+					<p class="qr-code-tips">截图转发给好友，获得更多粉丝！！</p>
+				</div>
+			</section>
+		</div>
+		<!-- <div class="img">
+				<img src="{{ info.yb_userhead }}" alt="userhead">
+			</div> -->
+
+	</div>
+	<p id=msg>{{ msg }}</p>
+	<!--<button type="button">复制链接</button>-->
+	<!--<button type="button">分享二维码</button>-->
+</body>
+
+</html>

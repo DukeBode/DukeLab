@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 
 urlpatterns = [
@@ -6,5 +6,5 @@ urlpatterns = [
     path('login', views.login),
     path('logout', views.logout),
     path('before_bind', views.before_bind),
-    path('([a-z]+)/back',views.back)
+    path('<slug:website>/back',views.back)
 ]

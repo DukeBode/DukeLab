@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>导航</title>
+    <style>
+        .home-first-screen {
+            padding: 15px 0 5px;
+            background: #f7f7f7;
+            border-bottom: 1px solid #fff;
+        }
+
+        /* @media all and (min-width:992px) */
+
+        .home-first-screen {
+            padding: 50px 0 10px;
+        }
+
+        #container {
+            position: relative;
+        }
+
+        body {
+            margin: 0;
+            font: 0.75em/1.75em 'Arial', Helvetica, Arial, "Microsoft Yahei", sans-serif;
+            color: #525252;
+            background: #fff;
+            padding: 0;
+            position: relative;
+        }
+
+        /* @media all and (min-width:768px) */
+
+        body {
+            padding-top: 58px;
+            background-position: center 55px;
+            background-repeat: no-repeat;
+            background-size: auto;
+        }
+
+        html {
+            font-size: 1em;
+            overflow-y: scroll;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            position: relative;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        .wrap {
+            max-width: 1170px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .row {
+            margin: 0 -10px;
+            box-sizing: border-box;
+        }
+
+        .home-first-screen .images,
+        .home-first-screen .parts {
+            margin-bottom: 0px;
+            position: relative;
+        }
+
+        /* @media all and (min-width:768px) */
+
+        .home-first-screen .images,
+        .home-first-screen .parts {
+            margin-bottom: 15px;
+        }
+
+        .home-first-screen .row {
+            margin-left: -5px;
+            <!--margin-right: -5px;-->
+        }
+
+        .home-first-screen .dubao {
+            position: relative;
+            margin-bottom: 5px;
+        }
+
+        /* @media all and (min-width:768px) */
+
+        .home-first-screen .dubao {
+            margin-bottom: 15px;
+        }
+
+        .home-first-screen .dubao {
+            background: #fff;
+            border: 1px solid #efefef;
+            padding: 13px 10px;
+            height: 14px;
+            overflow: hidden;
+        }
+
+        /* @media all and (min-width:768px) */
+
+        .home-first-screen .dubao {
+            padding: 13px 20px 13px 28px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Abel", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            margin: 0 0 15px 0;
+            color: #333;
+            line-height: 1.3em;
+        }
+
+        h3 {
+            font-size: 1.66em;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        dl dt,
+        blockquote,
+        blockquote blockquote blockquote,
+        #site-title,
+        #menu-primary li a {
+            font-family: Arial, "Microsoft Yahei", sans-serif;
+        }
+
+        .home-first-screen .dubao h3 {
+            float: left;
+            font-size: 14px;
+            color: #ff5a00;
+            font-weight: normal;
+            line-height: 14px;
+            padding: 0 10px 0 0;
+            border-right: 1px solid #efefef;
+        }
+
+        /* @media all and (min-width:768px) */
+
+        .home-first-screen .dubao h3 {
+            padding: 0 24px 0 0;
+            margin-right: 10px;
+        }
+
+        .home-first-screen .dubao .cont {
+            height: 14px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        a,
+        a:visited {
+            color: #0da4d3;
+            text-decoration: none;
+        }
+
+        img {
+            border: 0;
+            -ms-interpolation-mode: bicubic;
+            vertical-align: middle;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        a,
+        a img,
+        input,
+        .featured-post .byline {
+            -webkit-transition: all 0.18s ease-out;
+            -moz-transition: all 0.18s ease-out;
+            -ms-transition: all 0.18s ease-out;
+            -o-transition: all 0.18s ease-out;
+            transition: all 0.18s ease-out;
+        }
+
+        a {
+            color: #606060;
+        }
+
+        .home-first-screen .dubao .cont a {
+            display: block;
+            line-height: 14px;
+            color: #8f8f8f;
+            font-size: 12px;
+            transition: all .5s;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+
+        /* @media all and (min-width:768px) */
+
+        .home-first-screen .dubao .cont span {
+            border-right: 1px solid #efefef;
+        }
+
+        .home-first-screen .dubao .cont a span {
+            display: inline-block;
+            padding: 0 15px;
+            white-space: nowrap;
+        }
+
+        /* @media all and (min-width:768px) */
+
+        .home-first-screen .dubao .cont span:last-child {
+            border-right: none;
+        }
+
+        .home-first-screen .dubao h3 a {
+            color: #ff5a00;
+        }
+
+        /* @media all and (min-width:768px) */
+
+
+        .home-first-screen .col-xs-6,
+        .home-first-screen .col-md-3,
+        .home-first-screen .col-md-6 {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        /* @media all and (min-width:992px) */
+
+        .home-first-screen .parts .col-md-3 {
+            width: 23.72%;
+        }
+
+        /* @media all and (min-width:992px) */
+
+        .home-first-screen .parts .col-md-3.part-first {
+            width: 28.81%;
+        }
+
+        .home-first-screen .parts .home-first-part {
+            background: #fff;
+            border: 1px solid #efefef;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        /* @media all and (min-width:768px) */
+
+        .home-first-screen .parts .home-first-part {
+            height: 168px;
+        }
+
+        .home-first-screen .parts .hf-title {
+            font-size: 12px;
+            padding: 20px 0 10px;
+            margin-bottom: 0px;
+            height: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .home-first-screen .home-course .hf-title {
+            padding-bottom: 16px;
+            border-bottom: 1px solid #efefef;
+            position: relative;
+        }
+
+        .home-first-screen .home-course .courses {
+            margin: 7px 0 10px;
+            position: relative;
+            height: 96px;
+            overflow: hidden;
+        }
+
+        .home-first-screen .home-course .course-items {
+            overflow: hidden;
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            top: 0px;
+        }
+
+        ul {
+            list-style: circle;
+            margin: 0 0 1.75em 2.8em;
+            padding: 0;
+        }
+
+        .home-first-screen .home-course ul {
+            margin: 0 10px 0 12px;
+            list-style: none;
+        }
+
+        ul li,
+        ol li {
+            line-height: 2.1em;
+        }
+
+        .home-first-screen .home-course li {
+            list-style-type: disc;
+            list-style-position: inside;
+            line-height: 20px;
+            height: 20px;
+            overflow: hidden;
+            position: relative;
+            color: #c4c4c4;
+            font-size: 13px;
+            margin: 4px 0;
+        }
+
+        .home-first-screen .home-course li a {
+            color: #525252;
+        }
+
+        b,
+        strong {
+            font-weight: bold;
+        }
+
+        .home-first-screen .home-course li strong {
+            font-weight: normal;
+        }
+
+        .home-first-screen .home-course li span {
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            font-size: 12px;
+            display: inline-block;
+            padding: 0 10px;
+            line-height: 20px;
+            background: #fff5e3;
+            color: #b67d5e;
+        }
+
+        .home-first-screen .parts .hf-title strong {
+            color: #525252;
+            margin-right: 5px;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        .home-first-screen .fanye .pages {
+            font-size: 14px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 5px;
+            margin-top: 4px;
+        }
+
+        .home-first-screen .fanye .btn {
+            display: inline-block;
+            border: 1px solid #efefef;
+            vertical-align: middle;
+            cursor: pointer;
+            padding-top: 3px;
+            margin-right: -1px;
+        }
+
+        .home-first-screen .parts .hf-title span {
+            color: #d5d5d5;
+        }
+
+        .home-first-screen .fanye {
+            position: absolute;
+            right: 15px;
+            top: 14px;
+            background: #fff;
+        }
+
+        .home-first-screen .fanye .btn.no:hover,
+        .home-first-screen .fanye .btn.no {
+            cursor: default;
+            background: #fff;
+            color: #eee;
+            border-color: #efefef;
+        }
+
+        .home-first-screen .fanye .btn i {
+            vertical-align: text-bottom;
+        }
+
+        em,
+        cite {
+            font-style: italic;
+        }
+
+        .home-first-screen .fanye .pages em {
+            color: #525252;
+            font-style: normal;
+        }
+
+        .home-first-screen .parts .hf-title strong a {
+            color: #525252;
+        }
+
+        .home-first-screen .parts .items {
+            padding: 10px 10px 22px;
+        }
+
+        .home-first-screen .parts .items a {
+            display: block;
+        }
+
+        /* @media all and (min-width:768px) */
+
+        .home-first-screen .parts .items a {
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .home-first-screen .thumb {
+            display: block;
+            width: 100%;
+            padding-top: 62.22%;
+            overflow: hidden;
+            position: relative;
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .home-first-screen .items .thumb {
+            padding-top: 58.82%;
+        }
+
+        .home-first-screen .parts .items .thumb {
+            margin-bottom: 10px;
+        }
+
+        .home-first-screen .parts .items strong {
+            color: #525252;
+        }
+
+        /* @media all and (min-width:768px) */
+
+        .home-first-screen .parts .items a strong {
+            padding-top: 3px;
+        }
+
+        .home-first-screen .parts .items strong.title {
+            display: block;
+            line-height: 1.2em;
+            height: 1.2em;
+            overflow: hidden;
+            font-weight: normal;
+        }
+
+        .home-first-screen .thumb img {
+            display: none;
+        }
+
+        .home-first-screen .parts .hf-title .more {
+            display: block;
+            position: absolute;
+            right: 10px;
+            top: 18px;
+            font-size: 10px;
+            text-transform: uppercase;
+            padding: 3px 5px 0;
+            border: 1px solid #efefef;
+            color: #888;
+        }
+
+        .home-first-screen .parts .home-first-part.home-menus {
+            border-color: #e9e9e9;
+        }
+
+        .home-first-screen .home-menus ul {
+            margin: 0;
+            list-style: none;
+            overflow: hidden;
+        }
+
+        .home-first-screen .home-menus li {
+            float: left;
+            width: 33.33%;
+            text-align: center;
+        }
+
+        .home-first-screen .home-menus a {
+            display: block;
+            text-align: center;
+            font-size: 14px;
+            color: #525252;
+            position: relative;
+            line-height: 1.5;
+            padding: 10px 5px;
+            box-sizing: border-box;
+            height: 83px;
+            transition: all .1s;
+        }
+
+        .home-first-screen .home-menus a i {
+            font-size: 22px;
+            color: #cdcdcd;
+            line-height: 1.9;
+        }
+
+        /* @media all and (min-width:768px) */
+
+        .home-first-screen .home-menus a i {
+            font-size: 28px;
+            line-height: 1.5;
+        }
+
+        .home-first-screen .home-menus a span {
+            display: block;
+            line-height: 1;
+        }
+
+        .home-first-screen .images .col-md-6,
+        .home-first-screen .images .col-xs-6 {
+            margin-bottom: 10px;
+        }
+
+        /* @media all and (min-width:992px) */
+
+        .home-first-screen .images .item1 {
+            width: 52.54%;
+        }
+
+        .home-first-screen .images .item2 {
+            margin-bottom: 0px;
+        }
+
+        /* @media all and (min-width:992px) */
+
+        .home-first-screen .images .item2 {
+            width: 47.45%;
+        }
+
+        .home-first-screen .images a {
+            display: block;
+            position: relative;
+        }
+
+        .home-first-screen .images a strong {
+            display: block;
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            padding: .4em .8em .6em;
+            font-size: 12px;
+            color: #fff;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+            background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2) 0px, rgba(0, 0, 0, 0.6) 100%);
+            background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.2) 0, rgba(0, 0, 0, 0.6) 100%);
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0px, rgba(0, 0, 0, 0.6) 100%);
+            background-repeat: repeat-x;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33000000', endColorstr='#99000000', GradientType=0);
+            box-shadow: 0px -7px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* @media all and (min-width:768px) */
+
+        .home-first-screen .images a strong {
+            font-size: 14px;
+            line-height: 1.4;
+            letter-spacing: 1px;
+        }
+
+        .vitara_slide_in {
+            width: 100%;
+            position: relative;
+            letter-spacing: 1.2px;
+            overflow: hidden;
+        }
+
+        .vitara_slide_in .vitara_slide {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vitara_slide_in .extra {
+            width: 100%;
+            position: absolute;
+            right: 10px;
+            bottom: 0px;
+            z-index: 20;
+        }
+
+        .vitara_slide_in .slide_btn {
+            display: none;
+            text-align: center;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+            position: absolute;
+            top: 0px;
+        }
+
+        .vitara_slide_in .slide_prev {
+            left: 0px;
+        }
+
+        .vitara_slide_in .slide_next {
+            right: -0.5px;
+        }
+
+        .vitara_slide_in .slide_btn i {
+            padding: 20px 5px;
+            background: #999;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .vitara_slide_in .slide_btn:hover i {
+            background: #333;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .vitara_slide_in .extra ul {
+            padding: 0;
+            margin: 0;
+            text-align: right;
+            overflow: hidden;
+        }
+
+        .vitara_slide_in .extra ul li {
+            display: inline-block;
+            overflow: hidden;
+            cursor: pointer;
+            height: 5px;
+            width: 8px;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 0 0 5px 5px;
+            border-radius: 10px;
+        }
+
+        .vitara_slide_in .extra ul li:hover,
+        .vitara_slide_in .extra ul li.current {
+            background: #ffffff;
+        }
+
+        .vitara_slide_in .extra ul li.current {
+            height: 5px;
+            width: 18px;
+        }
+
+        .vitara_slide_in .extra ul li span,
+        .vitara_slide_in .extra ul li .sign,
+        .vitara_slide_in .extra ul li .num,
+        .vitara_slide_in .extra ul li img {
+            display: none;
+        }
+
+        .vitara_slide_in .vitara_slide ul {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        .vitara_slide_in .vitara_slide ul li {
+            display: block;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vitara_slide_in .vitara_slide ul li a {
+            display: block;
+            text-align: center;
+            position: static;
+            width: 100%;
+            height: 100%;
+        }
+
+        .vitara_slide_in .vitara_slide ul li img {
+            display: block;
+            marign: 0 auto;
+            position: absolute;
+            left: 50%;
+            max-width: none;
+            top: 0px;
+            transition: none;
+        }
+
+        .vitara_slide_in .vitara_slide ul li h3 {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            z-index: 10;
+            width: 100%;
+            padding: 20px;
+            margin: 0;
+            font-size: 16px;
+            color: #fff;
+            text-align: left;
+            font-weight: bold;
+            text-shadow: 0px 1px 3px #525252;
+            box-sizing: border-box;
+            background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.3));
+            background: -moz-linear-gradient(top, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.3));
+            background: -o-linear-gradient(top, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.3));
+            background: linear-gradient(top, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.3));
+        }
+
+        .vitara_slide_in .vitara_slide ul li h3 .label {
+            background: #fff;
+            color: #525252;
+            margin-right: 10px;
+            text-shadow: 0px 1px 1px #eee;
+            box-shadow: 0px 1px 1px #666;
+            -moz-box-shadow: 0 1px 1px #666;
+            -webkit-box-shadow: 0 1px 1px #666;
+            padding: 2px 2px 2px 4px;
+        }
+
+        .vitara_slide_in .vitara_slide ul li h3 .label {
+            border-radius: 3px;
+            padding: 2px 2px 2px 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* @media all and (min-width:768px) */
+
+        .vitara_slide_in .vitara_slide ul li h3 .label {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body class="home blog">
+    <div id="container">
+        <div class="home-first-screen">
+            <div class="wrap">
+                <div class="images row">
+                    <div class="col-md-6 item1">
+                        <div class="vitara_slide_in" id="spark_slide_homepage_new" data-event="click" data-speed="3000" data-animate=""
+                            data-content-width="610" data-img-height="346" data-img-width="610">
+                            <div class="slide_loading" style="display: none;">
+                                <img alt="slide" src="https://image.uisdc.com/wp-content/uploads/2018/08/uisdc-bbanner-180817.jpg">
+                            </div>
+                            <div class="vitara_slide" style="height: 346px;">
+                                <ul style="left: 0px; width: 1830px;">
+                                    <li class="current" style="width: 610px; height: 346px; float: left;">
+                                        <a href="https://www.uisdc.com/recently-very-hot-design-style" target="_blank">
+                                            <img style="width: 610px; height: 346px; margin-left: -305px;" alt="slide" src="https://image.uisdc.com/wp-content/uploads/2018/08/uisdc-bbanner-180817.jpg"
+                                                data-title="">
+                                            <h3>
+                                                <span class="label label-h3">推荐</span>涨姿势！带你认识最近很火的设计风格</h3>
+                                        </a>
+                                    </li>
+                                    <li style="width: 610px; height: 346px; float: left;">
+                                        <a href="https://www.uisdc.com/300-sets-of-background-textures" target="_blank">
+                                            <img style="width: 610px; height: 346px; margin-left: -305px;" alt="slide" src="https://image.uisdc.com/wp-content/uploads/2018/08/uisdc-bbanner-0811.jpg"
+                                                data-title="">
+                                            <h3>
+                                                <span class="label label-h3">下载</span>300套背景纹理免费素材打包下载</h3>
+                                        </a>
+                                    </li>
+                                    <li style="width: 610px; height: 346px; float: left;">
+                                        <a href="https://www.uisdc.com/zt" target="_blank">
+                                            <img style="width: 610px; height: 346px; margin-left: -305px;" alt="slide" src="https://image.uisdc.com/wp-content/uploads/2018/07/uisdc-zt-0715banner.jpg"
+                                                data-title="">
+                                            <h3></h3>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="extra">
+                                <ul class="ul_3">
+                                    <li class="current">
+                                        <i class="sign icon-circle-empty"></i>
+                                        <span class="num">1</span>
+                                        <img class="thumb" alt="thumb" src="https://image.uisdc.com/wp-content/uploads/2018/08/uisdc-bbanner-180817.jpg">
+                                        <span class="title"></span>
+                                    </li>
+                                    <li>
+                                        <i class="sign icon-circle-empty"></i>
+                                        <span class="num">2</span>
+                                        <img class="thumb" alt="thumb" src="https://image.uisdc.com/wp-content/uploads/2018/08/uisdc-bbanner-0811.jpg">
+                                        <span class="title"></span>
+                                    </li>
+                                    <li>
+                                        <i class="sign icon-circle-empty"></i>
+                                        <span class="num">3</span>
+                                        <img class="thumb" alt="thumb" src="https://image.uisdc.com/wp-content/uploads/2018/07/uisdc-zt-0715banner.jpg">
+                                        <span class="title"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="slide_btn slide_prev" style="height: 346px; line-height: 346px;">
+                                <i class="icon-prev"></i>
+                            </span>
+                            <span class="slide_btn slide_next" style="height: 346px; line-height: 346px;">
+                                <i class="icon-next"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 item2">
+                        <div class="row">
+                            <div class="col-xs-6 item2sub">
+                                <a href="https://www.uisdc.com/adobe-designer-vp-interview" target="_blank">
+                                    <span class="thumb" style="background-image:url(https://image.uisdc.com/wp-content/uploads/2018/08/jamie-myrold-banner-336.jpg)">
+                                        <img alt="优设独家专访 Adobe 设计副总裁" src="https://image.uisdc.com/wp-content/uploads/2018/08/jamie-myrold-banner-336.jpg">
+                                    </span>
+                                    <strong>优设独家专访 Adobe 设计副总裁</strong>
+                                </a>
+                            </div>
+                            <div class="col-xs-6 item2sub">
+                                <a class="external" href="https://www.wenjuan.com/s/yuui6ft/" target="_blank">
+                                    <span class="thumb" style="background-image:url(https://image.uisdc.com/wp-content/uploads/2018/08/uisdc-banner-wj0802.jpg)">
+                                        <img alt="吐槽有礼！获奖名单公布" src="https://image.uisdc.com/wp-content/uploads/2018/08/uisdc-banner-wj0802.jpg">
+                                    </span>
+                                    <strong>吐槽有礼！获奖名单公布</strong>
+                                </a>
+                            </div>
+                            <div class="col-xs-6 item2sub">
+                                <a href="https://www.uisdc.com/how-to-quote-after-private-order" target="_blank">
+                                    <span class="thumb" style="background-image:url(https://image.uisdc.com/wp-content/uploads/2018/07/baojiajiqiao-banner727.jpg)">
+                                        <img alt="接私单后如何报价？" src="https://image.uisdc.com/wp-content/uploads/2018/07/baojiajiqiao-banner727.jpg">
+                                    </span>
+                                    <strong>接私单后如何报价？</strong>
+                                </a>
+                            </div>
+                            <div class="col-xs-6 item2sub">
+                                <a href="https://www.uisdc.com/hunters" target="_blank">
+                                    <span class="thumb" style="background-image:url(https://image.uisdc.com/wp-content/uploads/2018/06/usidc-bbanner-0617.jpg)">
+                                        <img alt="优设旗下频道「细节猎人」精彩上线" src="https://image.uisdc.com/wp-content/uploads/2018/06/usidc-bbanner-0617.jpg">
+                                    </span>
+                                    <strong>优设旗下频道「细节猎人」精彩上线</strong>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="parts row">
+                    <div class="col-sm-6 col-md-3 part-first">
+                        <div class="home-first-part home-menus">
+                            <ul>
+                                <li>
+                                    <a href="https://www.uisdc.com/category/hot-download" target="_blank">
+                                        <i class="icon-download"></i>
+                                        <span>热门下载</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.uisdc.com/category/uiicon" target="_blank">
+                                        <i class="icon-cellphone"></i>
+                                        <span>界面设计</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.uisdc.com/category/share" target="_blank">
+                                        <i class="icon-article"></i>
+                                        <span>设计文章</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.uisdc.com/zt" target="_blank">
+                                        <i class="icon-subject"></i>
+                                        <span>优设专题</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.uisdc.com/category/work-blueprint" target="_blank">
+                                        <i class="icon-experience"></i>
+                                        <span>职场经验</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.uisdc.com/category/site-recommend" target="_blank">
+                                        <i class="icon-site"></i>
+                                        <span>酷站推荐</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="home-first-part home-subjects">
+                            <h2 class="hf-title">
+                                <strong>
+                                    <a href="https://www.uisdc.com/zt" target="_blank">热门专题</a>
+                                </strong>
+                                <span>专题频道精彩上线</span>
+                                <a class="more" href="https://www.uisdc.com/zt" target="_blank">more</a>
+                            </h2>
+                            <div class="items">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <a href="https://www.uisdc.com/zt/free-photo" target="_blank">
+                                            <span class="thumb" style="background-image:url(https://image.uisdc.com/wp-content/uploads/2018/08/uisdc-btbanner-08088.jpg);">
+                                                <img alt="thumb" src="https://image.uisdc.com/wp-content/uploads/2018/08/uisdc-btbanner-08088.jpg">
+                                            </span>
+                                            <strong class="title">高质量图库网站</strong>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <a href="https://www.uisdc.com/zt/design-rules" target="_blank">
+                                            <span class="thumb" style="background-image:url(https://image.uisdc.com/wp-content/uploads/2018/06/gaiban-bbanner-06072.jpg);">
+                                                <img alt="thumb" src="https://image.uisdc.com/wp-content/uploads/2018/06/gaiban-bbanner-06072.jpg">
+                                            </span>
+                                            <strong class="title">设计法则全揭秘</strong>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="home-first-part home-topics">
+                            <h2 class="hf-title">
+                                <strong>
+                                    <a class="external" href="https://uiiiuiii.com/inspiration" target="_blank">设计灵感</a>
+                                </strong>
+                                <span>合计发布1620</span>
+                                <a class="more external" href="https://uiiiuiii.com/inspiration" target="_blank">more</a>
+                            </h2>
+                            <div class="items">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <a class="external" href="https://uiiiuiii.com/inspirations/banner" target="_blank">
+                                            <span class="thumb" style="background-image:url(https://image.uisdc.com/wp-content/uploads/2018/08/uisdc-btbanner-08082-1.jpg);">
+                                                <img alt="thumb" src="https://image.uisdc.com/wp-content/uploads/2018/08/uisdc-btbanner-08082-1.jpg">
+                                            </span>
+                                            <strong class="title">Banner设计精选</strong>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <a class="external" href="https://uiiiuiii.com/inspirations/featured/style" target="_blank">
+                                            <span class="thumb" style="background-image:url(https://image.uisdc.com/wp-content/uploads/2018/08/uisdc-btbanner-0808.jpg);">
+                                                <img alt="thumb" src="https://image.uisdc.com/wp-content/uploads/2018/08/uisdc-btbanner-0808.jpg">
+                                            </span>
+                                            <strong class="title">32种经典艺术风格</strong>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="home-first-part home-course">
+                            <h2 class="hf-title">
+                                <strong>
+                                    <a class="external" href="https://xue.uisdc.com/" target="_blank">课程推荐</a>
+                                </strong>
+                                <span>每一课都是突破</span>
+                                <div class="fanye">
+                                    <span class="pages">
+                                        <em class="current_page" data-total="2" data-current="1">1</em> / 2</span>
+                                    <span class="btn btn-prev no">
+                                        <i class="icon-prev"></i>
+                                    </span>
+                                    <span class="btn btn-next">
+                                        <i class="icon-next"></i>
+                                    </span>
+                                </div>
+                            </h2>
+                            <div class="courses">
+                                <div class="course-items">
+                                    <ul>
+                                        <li>
+                                            <a class="external" href="https://xue.uisdc.com/draw/" target="_blank">
+                                                <strong>小光老师的手绘课</strong>
+                                                <span>火热报名</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="external" href="https://xue.uisdc.com/ui/" target="_blank">
+                                                <strong>2018 零基础UI设计课程</strong>
+                                                <span>入行课程</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="external" href="https://xue.uisdc.com/ixd/" target="_blank">
+                                                <strong>实战！交互设计特训班</strong>
+                                                <span>全程实战</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="external" href="https://xue.uisdc.com/draw2/" target="_blank">
+                                                <strong>超人气零基础手绘课程</strong>
+                                                <span>热门课程</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <a class="external" href="https://xue.uisdc.com/c4d/" target="_blank">
+                                                <strong>零基础C4D课程</strong>
+                                                <span>涨薪筹码</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="external" href="https://xue.uisdc.com/web2/" target="_blank">
+                                                <strong>零基础Web前端课程</strong>
+                                                <span>高薪全能</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="external" href="https://xue.uisdc.com/pm/" target="_blank">
+                                                <strong>设计师向产品转型课程</strong>
+                                                <span>涨薪必备</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="external" href="https://xue.uisdc.com/gd/" target="_blank">
+                                                <strong>零基础平面设计课程</strong>
+                                                <span>名师坐镇</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dubao">
+                    <h3>
+                        <a href="https://www.uisdc.com/news" target="_blank">优设读报</a>
+                    </h3>
+                    <div class="cont">
+                        <a href="https://www.uisdc.com/news" target="_blank">
+                            <span>1. 今日推荐：Confetti</span>
+                            <span>2. 大疆正式发布“御”Mavic 2 系列无人机</span>
+                            <span>3. OPPO 发布 R17 和 R17 Pro</span>
+                            <span>4. 每日壁纸：流星</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
