@@ -1,0 +1,41 @@
+.container {
+  width: 80vw;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+header>h1{
+	text-align: left;
+}
+
+h2{
+  border-style: solid;
+  border-color: #FFFFFF;
+  border-bottom-color: black;
+}
+
+#bio ul{
+  text-align: center;
+}
+
+#bio li{
+  width: 15vw;
+  display: inline-block;
+  text-align: left;
+}
+
+table{
+  width: 100%;
+}
+
+footer{
+  text-align: center;
+}
