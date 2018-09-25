@@ -11,9 +11,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
-header>h1{
-	text-align: left;
+header>h1,a{
+  display: inline-block;
+  text-align: left;
 }
 
 h2{
@@ -22,11 +22,8 @@ h2{
   border-bottom-color: black;
 }
 
-#bio ul{
-  text-align: center;
-}
-
 #bio li{
+  align:0 auto;
   width: 15vw;
   display: inline-block;
   text-align: left;
@@ -38,4 +35,7 @@ table{
 
 footer{
   text-align: center;
+}
+img{
+  width: 32px;
 }
