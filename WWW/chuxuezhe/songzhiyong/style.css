@@ -1,3 +1,9 @@
+
+
+html{
+  font-family: 'Source Han Serif/Noto Serif CJK';
+}
+@media screen and (min-width:800px){
 .container {
   width: 80vw;
   padding-right: 15px;
@@ -5,13 +11,23 @@
   margin-right: auto;
   margin-left: auto;
 }
+}
+
+@media screen and (max-width: 800px){
+  .container{
+    widows: 100vw;
+    margin:0;
+    padding:0;
+  }
+}
 
 .text-truncate {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-header>h1,a{
+
+#bio li, header>h1, a{
   display: inline-block;
 }
 
@@ -19,13 +35,7 @@ h2{
   border-style: solid;
   border-color: #FFFFFF;
   border-bottom-color: black;
-}
-
-#bio li{
-  align:0 auto;
-  width: 15vw;
-  display: inline-block;
-  text-align: left;
+  text-indent: 1rem;
 }
 
 table{
@@ -34,6 +44,9 @@ table{
 
 footer{
   text-align: center;
+}
+section p{
+  text-indent: 2rem;
 }
 img{
   width: 32px;
