@@ -18,9 +18,10 @@ class Book{
 
 public class TestBook{
     public static void main(String[] args){
-        int number=2;
+        int number=1;
         Scanner sc = new Scanner(System.in);
         Book[] book = new Book[number];
+        // book.add("nihoa","hao",2);
         book[0].add(sc.next(),sc.next(),sc.nextInt());
         book[0].display();
     }
