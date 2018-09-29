@@ -3,21 +3,18 @@
 html{
   font-family: 'Source Han Serif/Noto Serif CJK';
 }
-@media screen and (min-width:800px){
-.container {
-  width: 80vw;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+.container{
+  margin: 16px auto;
 }
+@media screen and (min-width:800px){
+  .container {
+    width: 80vw;
+  }
 }
 
 @media screen and (max-width: 800px){
   .container{
-    widows: 100vw;
-    margin:0;
-    padding:0;
+    width: 100vw;
   }
 }
 
@@ -31,6 +28,9 @@ html{
   display: inline-block;
 }
 
+#bio li{
+  width: 15vw;
+}
 h2{
   border-style: solid;
   border-color: #FFFFFF;
