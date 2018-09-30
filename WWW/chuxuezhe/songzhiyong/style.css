@@ -1,53 +1,66 @@
-
-
-html{
-  font-family: 'Source Han Serif/Noto Serif CJK';
-}
-.container{
-  margin: 16px auto;
-}
-@media screen and (min-width:800px){
-  .container {
-    width: 80vw;
-  }
+html {
+    font-family: 'Source Han Serif/Noto Serif CJK';
 }
 
-@media screen and (max-width: 800px){
-  .container{
-    width: 100vw;
-  }
+a {
+    text-decoration: none;
+}
+
+.container {
+    margin: 16px auto;
+}
+
+@media screen and (min-width:800px) {
+    .container {
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .container {
+        width: 100vw;
+    }
 }
 
 .text-truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-#bio li, header>h1, a{
-  display: inline-block;
+#bio li,
+header>h1,
+a {
+    display: inline-block;
 }
 
-#bio li{
-  width: 15vw;
-}
-h2{
-  border-style: solid;
-  border-color: #FFFFFF;
-  border-bottom-color: black;
-  text-indent: 1rem;
+#bio li {
+    width: 15vw;
 }
 
-table{
-  width: 100%;
+h2:hover {
+    font-size: 5rem;
 }
 
-footer{
-  text-align: center;
+h2 {
+    border-style: solid;
+    border-color: #FFFFFF;
+    border-bottom-color: black;
+    text-indent: 1rem;
 }
-section p{
-  text-indent: 2rem;
+
+table {
+    width: 100%;
 }
-img{
-  width: 32px;
+
+footer {
+    text-align: center;
+}
+
+section p {
+    text-indent: 2rem;
+}
+
+img {
+    width: 32px;
 }
