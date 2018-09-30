@@ -21,8 +21,8 @@ public class TestBook{
         int number=1;
         Scanner sc = new Scanner(System.in);
         Book[] book = new Book[number];
-        // book.add("nihoa","hao",2);
-        book[0].add(sc.next(),sc.next(),sc.nextInt());
+        // book[0].add("nihoa","hao",2);
+        book[0].add(sc.next(),sc.next(),sc.nextDouble());
         book[0].display();
     }
 }
