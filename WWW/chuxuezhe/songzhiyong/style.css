@@ -2,12 +2,50 @@ html {
     font-family: 'Source Han Serif/Noto Serif CJK';
 }
 
+h1 {
+    position: relative;
+    margin-left: 4rem;
+    text-transform: uppercase;
+}
+
+nav {
+    margin-right: 2rem;
+}
+
+nav,
+h2,
+body,
+{
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0;
+}
+
+hr {
+    filter: alpha(opacity=100, finishopacity=0, style=1);
+    color: #987cb9;
+    SIZE: 3;
+}
+
 a {
     text-decoration: none;
 }
 
-.container {
-    margin: 16px auto;
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+li:hover,
+a:hover {
+    color: yellowgreen;
 }
 
 @media screen and (min-width:800px) {
@@ -28,29 +66,41 @@ a {
     white-space: nowrap;
 }
 
-#bio li,
 header>h1,
 a {
     display: inline-block;
 }
 
-#bio li {
-    width: 15vw;
+#bio {
+    width: 75%;
+    height: 2rem;
+    column-count: 4;
+    column-rule: thin solid;
+    /* column-fill: auto; */
+    text-align: center;
 }
 
-h2:hover {
-    font-size: 5rem;
+#bio li {
+    list-style: none;
+}
+
+h3,
+h4 {
+    margin: 0.5rem 2rem;
 }
 
 h2 {
-    border-style: solid;
-    border-color: #FFFFFF;
-    border-bottom-color: black;
-    text-indent: 1rem;
+    margin: 0.5rem 1rem;
+    background-color: #ddffff;
+    padding: 14px;
+    border-left: 6px solid #ccc;
+    border-color: #2196F3;
 }
 
 table {
-    width: 100%;
+    margin: 0 auto;
+    width: 90%;
+    text-align: left;
 }
 
 footer {
@@ -59,8 +109,22 @@ footer {
 
 section p {
     text-indent: 2rem;
+    margin: 0.5rem 2rem;
 }
 
 img {
-    width: 32px;
+    width: 1.8rem;
+    margin: 0 0.2rem;
+}
+
+nav {
+    /* background-color: #ddffff; */
+    padding: auto;
+    text-align: right;
+}
+
+nav>p {
+    color: black;
+    margin: 0;
+    height: 2rem;
 }

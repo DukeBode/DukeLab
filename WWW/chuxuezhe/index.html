@@ -3,8 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta content="初学者"
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="初学者" <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>初学者导航</title>
     <base target="_blank">
@@ -14,29 +13,66 @@
     <script src="static/js/popper.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
     <script src="static/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .logo {
+            height: 100%;
+            width: 100%;
+        }
+        
+        img {
+            height: 50vh;
+        }
+    </style>
 </head>
 
 <body>
-<header class="jumbotron text-center">
-		<h1>初学者导航</h1>
-	</header>
+
     <div class="container">
+        <br>
+        <div class="row">
+            <div class="card col-md-4" style="width: 18rem;">
+                <img class="card-img-top" src="lvhuan/lvhuan.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">吕欢</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="lvhuan" class="btn">简历</a>
+                    <a href="lvhuan/lvhuan.png" class="btn">模板</a>
+                    <a href="lvhuan/lvhuan' form.html" class="btn">表单</a>
+                </div>
+            </div>
+            <div class="card col-md-4" style="width: 18rem;">
+                <img class="card-img-top" src="songzhiyong/songzhiyong.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">宋智勇</h5>
+                    <p class="card-text">An interpreter should know something about everything and everything about something.</p>
+                    <a href="songzhiyong" class="btn">简历</a>
+                    <a href="songzhiyong/songzhiyong.png" class="btn">模板</a>
+                    <a href="songzhiyong/form.html" class="btn">表单</a>
+                </div>
+            </div>
 
-    <div id="nav" class="nav justify-content-center">
-    <li class="nav-item"><a href="#" class="nav-link active">主页</a></li>
-    <li class="nav-item"><a href="lvhuan.html" class="nav-link active">吕欢</a></li>
-    <li class="nav-item"><a href="songzhiyong" class="nav-link active"><img src="songzhiyong/favicon.ico" alt="songzhiyong">宋智勇</a></li>
-    <li class="nav-item"><a href="caorong.html" class="nav-link active">曹荣</a></li></div>
-
+            <div class="card col-md-4" style="width: 18rem;">
+                <img class="card-img-top" src="caorong/caorong.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">曹荣</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="caorong" class="btn">简历</a>
+                    <a href="caorong/caorong.png" class="btn">模板</a>
+                    <a href="caorong/caorong' form.html" class="btn">表单</a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- <h1 class="text-center">初学者导航</h1> -->
         <div id="search">
             <form class="form-inline col-sm-8 offset-sm-2" role="form" action="https://www.baidu.com/s">
                 <div class="form-group col-10">
                     <label for="wd" class="col-sm-3">
                         <a href="https://www.baidu.com/">
-                            <img class="img-fluid" src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt="百度">
+                            <img class="img-fluid logo" src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt="百度">
                         </a>
                     </label>
-                    <input type="text" name="wd" class="form-control col-sm-9" id="wd">
+                    <input type="text" name="wd" class="form-control col-sm-9" id="wd" placeholder="初学者导航">
                 </div>
                 <button type="submit" class="btn col-sm-2">百度一下</button>
             </form>
