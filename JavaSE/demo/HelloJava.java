@@ -11,5 +11,8 @@ public class HelloJava{
     static final double PI=3.14;
     public static void main(String[] args){
         System.out.println("Hello Java");
+        for(int i=1;i<12;i++){
+            System.out.println("天");
+        }
     }
 }

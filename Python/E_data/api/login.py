@@ -8,22 +8,17 @@ from base64 import b64encode,urlsafe_b64encode
 from Crypto.Cipher import PKCS1_OAEP,PKCS1_v1_5
 from Crypto.PublicKey import RSA
 
-BASE_URL = 'https://www.yiban.cn'
+HOST = 'https://www.yiban.cn'
 
 class User:
-    # /public/js/
-    # https://www.yiban.cn/public/js/config/main.js?v=201805311655
     token=''
+    header = {
+        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134',
+    }
     def __init__(self, account, password):
         self.account=account
         self.password=password
-
-    header = {
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Connection': 'keep-alive',
-        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134',
-        'X-Requested-With': 'XMLHttpRequest'
-    }
+        self.req=requests.Session()
 
     # 加密
     def __password(self, publicKey):
@@ -40,12 +35,13 @@ class User:
         return img.cookies
 
     def token(self):
-        LOGIN_PAGE = BASE_URL + '/login'
-        LOGIN_URL = BASE_URL + '/login/doLoginAjax'
-        req = requests.Session()
-        loginPage = req.get(LOGIN_PAGE,headers=self.header)
+        loginPage = self.req.get(url=f'{HOST}/login',headers=self.header)
+        print(loginPage.cookies)
         publicKey = re.search(r'data-keys=\'([\s\S]*?)\'',loginPage.text).group(1)
         iscaptcha = re.search(r'isCaptcha=\"([0-9])\"',loginPage.text).group(1)
+        captchaUrl = HOST+re.search(r'/captcha/index\?([0-9]+)',loginPage.text).group(0)
+        img = self.req.get(captchaUrl,headers=self.header)
+        self.__captcha(img)
         data = dict(
             account=self.account,
             captcha=None,
@@ -53,30 +49,28 @@ class User:
             # password=parse.quote(self.__password(publicKey)),
             password=self.__password(publicKey)
         )
-        captchaUrl=BASE_URL+re.search(r'/captcha/index\?([0-9]+)',loginPage.text).group(0)
-        img = req.get(captchaUrl,headers=self.header)
-        self.__captcha(img)
+        LOGIN_URL = HOST + '/login/doLoginAjax'
         # data['captcha']=parse.quote(input("请输入图形验证码："))
-        loginUrl = req.post(LOGIN_URL, headers=self.header, data=data)
-        while loginUrl.json()['code']!='200':#=='711':
-            print(loginUrl.json())
-            captchaUrl=BASE_URL+'/captcha/index?'+str(int(time.time()))
-            # captchaUrl=BASE_URL+re.search(r'/captcha/index\?([0-9]+)',loginPage.text).group(0)
-            # cookies = requests.utils.dict_from_cookiejar(self.__captcha(req, captchaUrl))
-            self.__captcha(req.get(captchaUrl,headers=self.header))
-            data['captcha']=parse.quote(input("请输入图形验证码："))
-            loginUrl = req.post(LOGIN_URL, headers=self.header, data=data)
-        token = loginUrl.cookies['yiban_user_token']
+        login = self.req.post(LOGIN_URL, headers=self.header, data=data)
+        print(login.text)
+        # while loginUrl.json()['code']!='200':#=='711':
+        #     print(loginUrl.json())
+        #     captchaUrl=HOST+'/captcha/index?'+str(int(time.time()))
+        #     # captchaUrl=BASE_URL+re.search(r'/captcha/index\?([0-9]+)',loginPage.text).group(0)
+        #     # cookies = requests.utils.dict_from_cookiejar(self.__captcha(req, captchaUrl))
+        #     self.__captcha(self.req.get(captchaUrl,headers=self.header))
+        #     data['captcha']=parse.quote(input("请输入图形验证码："))
+        #     loginUrl = self.req.post(LOGIN_URL, headers=self.header, data=data)
+     
+        # print(login.text)
+        hello=self.req.get('https://www.yiban.cn')
+        token = hello.cookies
         return token
 
-    def info(self,token):
-        pass
 
 
 if __name__=='__main__':
-    song=User()
-    # for item in song.token():
-        # print(item)
+    song=User('17009327942','123456a')
     print(song.token())
    
 
