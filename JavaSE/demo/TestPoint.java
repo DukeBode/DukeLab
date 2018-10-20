@@ -1,3 +1,15 @@
+public class TestPoint{
+	public static void main(String[] args){
+		Point p = new Point(1.0,2.0,3.0);
+		Point p1 = new Point(0.0,0.0,0.0);
+		System.out.println(p.getDistance(p1));
+		p.setX(5.0);
+		p.setY(6.0);
+		p.setZ(7.0);
+		System.out.println(p.getDistance(new Point(1.0,1.0,1.0)));
+	}
+}
+
 class Point{
 	double x,y,z;
 	Point(double _x,double _y,double _z){
@@ -23,14 +35,3 @@ class Point{
 	}
 }
 
-public class TestPoint{
-	public static void main(String[] args){
-		Point p = new Point(1.0,2.0,3.0);
-		Point p1 = new Point(0.0,0.0,0.0);
-		System.out.println(p.getDistance(p1));
-		p.setX(5.0);
-		p.setY(6.0);
-		p.setZ(7.0);
-		System.out.println(p.getDistance(new Point(1.0,1.0,1.0)));
-	}
-}

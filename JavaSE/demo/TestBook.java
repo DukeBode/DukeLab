@@ -1,5 +1,16 @@
 import java.util.Scanner;
 
+public class TestBook{
+    public static void main(String[] args){
+        int number=1;
+        Scanner sc = new Scanner(System.in);
+        Book[] book = new Book[number];
+        // book[0].add("nihoa","hao",2);
+        book[0].add(sc.next(),sc.next(),sc.nextDouble());
+        book[0].display();
+    }
+}
+
 class Book{
     String author,name;
     double price;
@@ -16,13 +27,3 @@ class Book{
 
 }
 
-public class TestBook{
-    public static void main(String[] args){
-        int number=1;
-        Scanner sc = new Scanner(System.in);
-        Book[] book = new Book[number];
-        // book[0].add("nihoa","hao",2);
-        book[0].add(sc.next(),sc.next(),sc.nextDouble());
-        book[0].display();
-    }
-}

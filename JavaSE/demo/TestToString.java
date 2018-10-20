@@ -17,8 +17,9 @@ class Cat{
         this.weight=weight;
     }
     public boolean equals(Object obj){
-        if(obj==null)retrurn false;
-        if(obj instan)
+        if(obj==null)return false;
+        // if(obj instant)
+        return true;
     }
     void show(){
         System.out.println(2);
