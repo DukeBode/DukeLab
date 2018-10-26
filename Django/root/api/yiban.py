@@ -130,9 +130,7 @@ class App:
 
     # 站内信
     def letter(self, data):
-        req = requests.post(url=f'{self.BASE_URL}msg/letter', data=data)
-        return req.json()
-
+        return requests.post(url=f'{self.BASE_URL}msg/letter', data=data).json()
 
     def sport_steps(self):
         pass

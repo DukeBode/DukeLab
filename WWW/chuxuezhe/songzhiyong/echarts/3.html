@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script>
+        class Roxik {
+            constructor() {
+                this.models = [];
+                this.initialize();
+                this.animate();
+            }
+
+            initialize() {
+                this.initializeEngine();
+                this.initializeCamera();
+                this.initializeLights();
+                this.initializeMaterials();
+                this.initializeObjects();
+                this.initializeFilters();
+                this.initializeListeners();
+            }
+
+            initializeEngine() {
+                this.scene = new THREE.Scene();
+                this.scene.background = new THREE.Color(0xfefefe);
+
+                this.renderer = new THREE.WebGLRenderer({
+                    antialias: true
+                });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.body.appendChild(this.renderer.domElement);
+            }
+
+            initializeCamera() {
+                this.camera = new THREE.PerspectiveCamera(
+                    55,
+                    window.innerWidth / window.innerHeight,
+                    0.001,
+                    1000
+                );
+
+                this.camera.position.x = 2;
+                this.camera.position.y = 2;
+                this.camera.position.z = -2;
+
+                this.cameraController = new CameraController();
+                this.cameraController.camera = this.camera;
+            }
+
+            initializeLights() {
+                this.ambientLight = new THREE.DirectionalLight(0x9090aa);
+                this.ambientLight.position.set(-10, 10, -10).normalize();
+                this.scene.add(this.ambientLight);
+
+                var light = new THREE.HemisphereLight(0xffffff, 0x444444);
+                light.position.set(1, 1, 1);
+                this.scene.add(light);
+            }
+
+            initializeMaterials() {
+                const colors = [
+                    0x97350b,
+                    0x266ea5,
+                    0x00847f,
+                    0x2f818e,
+                    0x08917c,
+                    0x08917c,
+                    0x6b458c,
+                    0x7a4526
+                ];
+
+                this.sphereMaterial = [];
+
+                for (var i = 0; i < 8; i++) {
+                    let mat = new THREE.MeshLambertMaterial({
+                        color: colors[i]
+                    });
+                    this.sphereMaterial.push(mat);
+                }
+
+                this.cubeMaterial = new THREE.MeshBasicMaterial({
+                    color: 0xdddddd
+                });
+                this.cubeMaterial.wireframe = true;
+            }
+
+            initializeObjects() {
+                const bet = 0.7;
+                const offset = (8 - 1) * bet * 0.5;
+
+                let geometry = new THREE.IcosahedronBufferGeometry(0.3, 2);
+
+                for (var i = 0; i < 8; i++) {
+                    for (var j = 0; j < 8; j++) {
+                        for (var k = 0; k < 8; k++) {
+                            let m = this.sphereMaterial[Math.floor(Math.random() * 8)];
+                            let s = new THREE.Mesh(geometry, m);
+                            s.position.set(i * bet - offset, j * bet - offset, k * bet - offset);
+
+                            this.models.push(s);
+                            this.scene.add(s);
+                        }
+                    }
+                }
+
+                this.cube = new THREE.CubeGeometry(18, 18, 18, 4, 4, 4);
+                this.cubeMesh = new THREE.Mesh(this.cube, this.cubeMaterial);
+                this.scene.add(this.cubeMesh);
+
+                this.cameraController.models = this.models;
+
+                this.motionController = new MotionController();
+                this.motionController.models = this.models;
+                this.motionController.changeScene(this.motionController.CYLINDER);
+            }
+
+            initializeFilters() {}
+
+            initializeListeners() {
+                window.addEventListener("resize", this.updateDimensions.bind(this));
+                document.addEventListener("keydown", this.keydownHandler.bind(this));
+            }
+
+            animate() {
+                requestAnimationFrame(this.animate.bind(this));
+
+                this.cameraController.step();
+                this.motionController.step();
+
+                this.renderer.render(this.scene, this.camera);
+            }
+
+            updateDimensions() {
+                let width = window.innerWidth;
+                let height = window.innerHeight;
+
+                this.renderer.setSize(width, height);
+                this.camera.aspect = width / height;
+                this.camera.updateProjectionMatrix();
+            }
+
+            keydownHandler(event) {
+                var keyCode = event.which;
+                switch (keyCode) {
+                    case 49:
+                    case 97:
+                        this.motionController.changeScene(this.motionController.CYLINDER);
+                        break;
+                    case 50:
+                    case 98:
+                        this.motionController.changeScene(this.motionController.SPHERE);
+                        break;
+                    case 51:
+                    case 99:
+                        this.motionController.changeScene(this.motionController.CUBE);
+                        break;
+                    case 52:
+                    case 100:
+                        this.motionController.changeScene(this.motionController.TUBE);
+                        break;
+                    case 53:
+                    case 101:
+                        this.motionController.changeScene(this.motionController.WAVE);
+                        break;
+                    case 54:
+                    case 102:
+                        this.motionController.changeScene(this.motionController.GRAVITY);
+                        break;
+                    case 55:
+                    case 103:
+                        this.motionController.changeScene(this.motionController.ANTIGRAVITY);
+                        break;
+                }
+            }
+        }
+
+        class CameraController {
+            constructor() {
+                this.camera = null;
+                this.models = [];
+
+                this.frame = 1000;
+                this.sceneLimit = 90;
+                this.tm;
+                this.target = new THREE.Vector3(0, 0, 0);
+                this.cs = 0;
+                this.gy = 0;
+                this.l = 0;
+                this.bl = 6;
+                this.ts = 0;
+                this.r = 0;
+                this.rp = 0.03;
+            }
+
+            step() {
+                if (++this.frame > this.sceneLimit) {
+                    this.frame = 0;
+                    this.sceneLimit = Math.floor(Math.random() * 60 + 30);
+                    this.tm = this.models[Math.floor(Math.random() * this.models.length)];
+                    this.ts = 0;
+                    this.cs = 0;
+                    this.gy = Math.random() * 8 - 4;
+                    this.rp = Math.random() * 0.06 - 0.03;
+                    this.bl = Math.random() * 4 + 7;
+                }
+
+                if (this.ts < 0.05) {
+                    this.ts += 0.005;
+                }
+
+                if (this.cs < 0.5) {
+                    this.cs += 0.005;
+                }
+
+                this.target.x += (this.tm.position.x - this.target.x) * this.ts;
+                this.target.y += (this.tm.position.y - this.target.y) * this.ts;
+                this.target.z += (this.tm.position.z - this.target.z) * this.ts;
+
+                this.camera.lookAt(this.target);
+
+                this.r += this.rp;
+                this.l += (this.bl - this.l) * 0.1;
+                this.camera.position.x +=
+                    (Math.cos(this.r) * this.l +
+                        this.tm.position.x -
+                        this.camera.position.x) *
+                    this.cs;
+                this.camera.position.y +=
+                    (this.tm.position.y + this.gy - this.camera.position.y) * this.cs;
+                this.camera.position.z +=
+                    (Math.sin(this.r) * this.l +
+                        this.tm.position.z -
+                        this.camera.position.z) *
+                    this.cs;
+            }
+        }
+
+        class MotionController {
+            constructor() {
+                this.CYLINDER = 0;
+                this.SPHERE = 1;
+                this.CUBE = 2;
+                this.TUBE = 3;
+                this.WAVE = 4;
+                this.GRAVITY = 5;
+                this.ANTIGRAVITY = 6;
+
+                this.models = [];
+
+                this.scene = this.CYLINDER;
+                this.sceneLimit = 100;
+                this.frame = 0;
+                this.cutoff = 0;
+                this.r = 0.0;
+                this.r0 = 0.0;
+                this.rp = 0.0;
+                this.rl = 0.0;
+            }
+
+            changeScene(scene, limit = -1) {
+                this.cutoff = 0;
+                this.scene = scene;
+                this.frame = 0;
+
+                if (limit < 0) {
+                    this.sceneLimit = Math.floor(Math.random() * 140 + 3);
+                } else {
+                    this.sceneLimit = limit;
+                }
+
+                switch (this.scene) {
+                    case this.CYLINDER:
+                        this.cylinder();
+                        break;
+                    case this.SPHERE:
+                        this.sphere();
+                        break;
+                    case this.CUBE:
+                        this.cube();
+                        break;
+                    case this.TUBE:
+                        this.tube();
+                        break;
+                    case this.WAVE:
+                        this.wave();
+                        break;
+                    case this.GRAVITY:
+                        this.gravity();
+                        break;
+                    case this.ANTIGRAVITY:
+                        this.antigravity();
+                        break;
+                }
+            }
+
+            cylinder() {
+                let n = 0;
+                let r = Math.PI * 2 / this.models.length;
+                let d = r * Math.floor(Math.random() * 40 + 1);
+
+                for (let i = 0; i < this.models.length; i++) {
+                    let m = this.models[i];
+                    m.speed = 0;
+                    m.accel = Math.random() * 0.05 + 0.022;
+                    m.animate = false;
+                    m.dest = new THREE.Vector3();
+
+                    if (i < this.models.length - 50) {
+                        m.dest.x = Math.cos(n) * 4;
+                        m.dest.y = i * 0.008 - (this.models.length - 50) * 0.004;
+                        m.dest.z = Math.sin(n) * 4;
+                    } else {
+                        m.dest.x = Math.random() * 14 - 7;
+                        m.dest.y = Math.random() * 14 - 7;
+                        m.dest.z = Math.random() * 14 - 7;
+                    }
+
+                    n = n + d;
+                }
+            }
+
+            sphere() {
+                var s = 0;
+                var c = 0;
+                var r = Math.PI * 2 / this.models.length;
+                var d = r * Math.floor(Math.random() * 40 + 1);
+                var d2 = Math.random() * 5 + 3;
+
+                for (let i = 0; i < this.models.length; i++) {
+                    var m = this.models[i];
+                    m.speed = 0;
+                    m.accel = Math.random() * 0.05 + 0.022;
+                    m.animate = false;
+                    m.dest = new THREE.Vector3();
+
+                    var d1 = Math.cos(s) * d2;
+
+                    if (Math.random() > 0.06) {
+                        m.dest.x = Math.cos(c) * d1;
+                        m.dest.y = Math.sin(s) * d2;
+                        m.dest.z = Math.sin(c) * d1;
+                    } else {
+                        m.dest.x = Math.random() * 7 - 7;
+                        m.dest.y = Math.random() * 7 - 7;
+                        m.dest.z = Math.random() * 7 - 7;
+                    }
+
+                    s = s + r;
+                    c = c + d;
+                }
+            }
+
+            cube() {
+                var a = Math.random() * 0.05 + 0.022;
+                var n = 0;
+                var l = 1;
+
+                while (true) {
+                    if (l * l * l > this.models.length) {
+                        l--;
+                        break;
+                    }
+
+                    l++;
+                }
+
+                for (let i = 0; i < l; i++) {
+                    for (let j = 0; j < l; j++) {
+                        for (let k = 0; k < l; k++) {
+                            var m = this.models[n++];
+                            m.speed = 0;
+                            m.accel = a;
+                            m.animate = false;
+                            m.dest = new THREE.Vector3();
+
+                            m.dest.x = i * 0.8 + -(l - 1) * 0.8 * 0.5;
+                            m.dest.y = j * 0.8 + -(l - 1) * 0.8 * 0.5;
+                            m.dest.z = k * 0.8 + -(l - 1) * 0.8 * 0.5;
+                        }
+                    }
+                }
+            }
+
+            tube() {
+                var a = Math.random() * 0.05 + 0.022;
+                var v = 0.02 + Math.random() * 0.025;
+                var dx = -v * this.models.length * 0.44;
+                var d = 1.2 + Math.random() * 1;
+
+                for (let i = 0; i < this.models.length; i++) {
+                    var m = this.models[i];
+                    m.speed = 0;
+                    m.accel = a;
+                    m.animate = false;
+                    m.dest = new THREE.Vector3();
+
+                    if (Math.random() > 0.05) {
+                        m.dest.x = i * v + dx;
+                        m.dest.y = Math.random() * d - d * 0.5;
+                        m.dest.z = Math.random() * d - d * 0.5;
+                    } else {
+                        m.dest.x = Math.random() * 14 - 7;
+                        m.dest.y = Math.random() * 14 - 7;
+                        m.dest.z = Math.random() * 14 - 7;
+                    }
+                }
+            }
+
+            wave() {
+                var a = Math.random() * 0.05 + 0.022;
+                var n = 0;
+                var l = Math.floor(Math.sqrt(this.models.length));
+                var d = -(l - 1) * 0.55 * 0.5;
+                var r = 0;
+                var t = Math.random() * 0.3 + 0.05;
+                var s = Math.random() * 1 + 1;
+
+                this.r = 0;
+                this.r0 = 0;
+                this.rl = Math.random() * 1 + 1;
+                this.rp = Math.random() * 0.3 + 0.1;
+
+                for (let i = 0; i < l; i++) {
+                    var ty = Math.cos(r) * s;
+                    r += t;
+
+                    for (let j = 0; j < l; j++) {
+                        n += 1;
+                        var m = this.models[n - 1];
+                        m.speed = 0;
+                        m.accel = a;
+                        m.animate = false;
+                        m.dest = new THREE.Vector3();
+                        m.dir = new THREE.Vector3();
+
+                        m.dir.x = m.dir.y = m.dir.z = 0;
+                        m.dest.x = i * 0.55 + d;
+                        m.dest.y = ty;
+                        m.dest.z = j * 0.55 + d;
+                    }
+                }
+
+                while (n < this.models.length) {
+                    var m = this.models[n];
+                    m.speed = 0;
+                    m.accel = a;
+                    m.animate = false;
+                    m.dest = new THREE.Vector3();
+
+                    m.dest.x = Math.random() * 14 - 7;
+                    m.dest.y = Math.random() * 14 - 7;
+                    m.dest.z = Math.random() * 14 - 7;
+                    n++;
+                }
+            }
+
+            gravity() {
+                this.sceneLimit = 60;
+
+                for (let i = 0; i < this.models.length; i++) {
+                    var m = this.models[i];
+                    m.dir = new THREE.Vector3();
+
+                    m.speed = 0;
+                    m.accel = 0.5;
+                    m.animate = false;
+                    m.dir.y = Math.random() * -0.2;
+                }
+            }
+
+            antigravity() {
+                for (let i = 0; i < this.models.length; i++) {
+                    var m = this.models[i];
+                    m.speed = 0;
+                    m.accel = 0.5;
+                    m.animate = false;
+                    m.dir = new THREE.Vector3();
+
+                    m.dir.x = Math.random() * 0.25 - 0.125;
+                    m.dir.y = Math.random() * 0.25 - 0.125;
+                    m.dir.z = Math.random() * 0.25 - 0.125;
+                }
+            }
+
+            step() {
+                let m = null;
+
+                switch (this.scene) {
+                    case this.CYLINDER:
+                    case this.SPHERE:
+                    case this.CUBE:
+                    case this.TUBE:
+                        for (let i = 0; i < this.cutoff; i++) {
+                            m = this.models[i];
+
+                            if (!m.animate) {
+                                if (m.speed < 0.8) {
+                                    m.speed = m.speed + m.accel;
+                                }
+
+                                let c0 = m.dest.x - m.position.x;
+                                let c1 = m.dest.y - m.position.y;
+                                let c2 = m.dest.z - m.position.z;
+                                m.position.x = m.position.x + c0 * m.speed;
+                                m.position.y = m.position.y + c1 * m.speed;
+                                m.position.z = m.position.z + c2 * m.speed;
+                                if (
+                                    Math.abs(c0) < 0.05 &&
+                                    Math.abs(c1) < 0.05 &&
+                                    Math.abs(c2) < 0.05
+                                ) {
+                                    m.animate = true;
+                                    m.position.x = m.dest.x;
+                                    m.position.y = m.dest.y;
+                                    m.position.z = m.dest.z;
+                                }
+                            }
+                        }
+
+                        let maxp = Math.floor(this.models.length / 40);
+                        this.cutoff += maxp;
+                        if (this.cutoff > this.models.length) this.cutoff = this.models.length;
+
+                        break;
+
+                    case this.WAVE:
+                        let cos = 0;
+                        let max = Math.floor(Math.sqrt(this.models.length));
+                        let cc = 0;
+
+                        for (let i = 0; i < max; i++) {
+                            cos = Math.cos(this.r) * this.rl;
+                            this.r = this.r + this.rp;
+                            for (let j = 0; j < max; j++) {
+                                m = this.models[cc++];
+                                m.dest.y = cos;
+                            }
+                        }
+
+                        this.r0 += 0.11;
+                        this.r = this.r0;
+
+                        for (let i = 0; i < this.cutoff; i++) {
+                            m = this.models[i];
+                            if (m.speed < 0.5) {
+                                m.speed += m.accel;
+                            }
+
+                            m.position.x = m.position.x + (m.dest.x - m.position.x) * m.speed;
+                            m.position.y = m.position.y + (m.dest.y - m.position.y) * m.speed;
+                            m.position.z = m.position.z + (m.dest.z - m.position.z) * m.speed;
+                        }
+
+                        var maxp = Math.floor(this.models.length / 40);
+                        this.cutoff += maxp;
+                        if (this.cutoff > this.models.length) this.cutoff = this.models.length;
+
+                        break;
+
+                    case this.GRAVITY:
+                        for (let i = 0; i < this.models.length; i++) {
+                            m = this.models[i];
+                            m.position.y = m.position.y + m.dir.y;
+                            m.dir.y = m.dir.y - 0.06;
+                            if (m.position.y < -9) {
+                                m.position.y = -9;
+                                m.dir.y = m.dir.y * -m.accel;
+                                m.accel = m.accel * 0.9;
+                            }
+                        }
+
+                        break;
+
+                    case this.ANTIGRAVITY:
+                        for (let i = 0; i < this.cutoff; i++) {
+                            m = this.models[i];
+                            m.position.x = m.position.x + m.dir.x;
+                            m.position.y = m.position.y + m.dir.y;
+                            m.position.z = m.position.z + m.dir.z;
+                        }
+
+                        this.cutoff += 30;
+                        if (this.cutoff > this.models.length) this.cutoff = this.models.length;
+
+                        break;
+                }
+
+                if (++this.frame > this.sceneLimit)
+                    this.changeScene(Math.floor(Math.random() * 7));
+            }
+        }
+
+        var roxik = new Roxik();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -4,7 +4,6 @@ function fibonacci(n) {
 }
 
 function displayDate() {
-    now = Date();
     document.getElementById("date").innerHTML = Date();
 }
 

@@ -58,7 +58,7 @@ public class SwingAndThread extends JFrame{
         // 使窗体可见
         setVisible(true);
         // 设置窗体的关闭方式
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        // setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
     public static void main(String[] args){
         // 实例化一个 SwingAndThread 对象
