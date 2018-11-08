@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html class=" js js flexbox">
+
+<head>
+    <style>
+        p {
+            margin: 0 0 11px;
+            margin-bottom: 1.8rem;
+        }
+        
+        a {
+            color: #2290ff;
+            text-decoration: none;
+        }
+        
+        img {
+            vertical-align: middle;
+        }
+        
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+        
+        *,
+         ::after,
+         ::before {
+            box-sizing: border-box;
+        }
+        
+        h1,
+        h2,
+        h3 {
+            line-height: 1.1;
+            margin-top: 22px;
+            margin-bottom: 11px;
+        }
+        
+        a {
+            background: 0 0;
+        }
+        
+        img {
+            border: 0;
+        }
+        
+        img {
+            border: 0;
+        }
+        
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        main,
+        nav,
+        section,
+        summary {
+            display: block;
+        }
+        
+        .ux-band-container>*,
+        .ux-video-embed-details>*,
+        [data-ux-layout=stacked]>* {
+            margin: 0 0 30px;
+        }
+        
+        .ux-card-body>*,
+        .ux-card-footer>*,
+        .ux-card-header>*,
+        .ux-card>* {
+            margin: 0 0 30px;
+            width: 100%;
+        }
+        
+        .ux-band-container> :last-child,
+        .ux-video-embed-details> :last-child,
+        [data-ux-layout=stacked]> :last-child {
+            margin-bottom: 0px;
+        }
+        /* @media all and (min-width:768px) */
+        
+        .flexbox [data-ux-layout='4 4 4 flex'] {
+            display: -webkit-flex;
+            display: flex;
+        }
+        
+        .ux-band-container,
+        .ux-footer-container {
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 9px;
+        }
+        /* @media all and (min-width:768px) */
+        
+        .ux-band-container,
+        .ux-footer-container {
+            width: 750px;
+            padding: 0;
+        }
+        
+        .flexbox .ux-band-container,
+        .flexbox .ux-video-embed-details,
+        .flexbox [data-ux-layout=stacked] {
+            -webkit-flex-direction: column;
+            flex-direction: column;
+        }
+        
+        .ux-band,
+        .ux-footer {
+            padding-top: 3.33em;
+            padding-bottom: 3.33em;
+            background-color: #fff;
+        }
+        
+        .ux-band {
+            background-size: cover;
+        }
+        
+        [data-ux-band-background=corporate-angle-red].ux-band {
+            background: #a30000;
+            background: linear-gradient(135deg, #a30000, #a30000 30%, #c00 0, #c00);
+            filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='color("brand-primary-darker")', endColorstr='color("brand-primary")', GradientType=1);
+            background-attachment: fixed;
+        }
+        
+        .ux-card {
+            position: relative;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            display: block;
+            max-width: 100%;
+            padding: 30px;
+        }
+        /* @media all and (min-width:768px) */
+        
+        [data-ux-layout='4 4 4 flex']> :nth-child(3n+1),
+        [data-ux-layout='4 4 4']> :nth-child(3n+1) {
+            width: 31.61%;
+            float: left;
+            margin-right: 2.57%;
+        }
+        /* @media all and (min-width:768px) */
+        
+        [data-ux-layout='4 4 4 flex']> :nth-child(3n+2),
+        [data-ux-layout='4 4 4']> :nth-child(3n+2) {
+            width: 31.61%;
+            float: left;
+            margin-right: 2.57%;
+        }
+        /* @media all and (min-width:768px) */
+        
+        [data-ux-layout='4 4 4 flex']> :nth-child(3n+3),
+        [data-ux-layout='4 4 4']> :nth-child(3n+3) {
+            width: 31.61%;
+            float: right;
+            margin-right: 0px;
+        }
+        
+        [data-ux-theme=light].ux-card,
+        [data-ux-theme~=white].ux-card {
+            background-color: #fff;
+        }
+        
+        .flexbox .ux-card {
+            display: -webkit-flex;
+            display: flex;
+        }
+        
+        .flexbox .ux-card-body>*,
+        .flexbox .ux-card-footer>*,
+        .flexbox .ux-card-header>*,
+        .flexbox .ux-card>* {
+            -webkit-flex: 0 0 auto;
+            flex: 0 0 auto;
+        }
+        
+        .flexbox [data-ux-justify=justify] .ux-card-body {
+            -webkit-flex-grow: 1;
+            flex-grow: 1;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+        }
+        
+         :last-child.ux-card-footer {
+            margin-bottom: 0px;
+        }
+        
+        .ux-card-body> :last-child,
+        .ux-card-footer> :last-child,
+        .ux-card-header> :last-child {
+            margin-bottom: 0px;
+        }
+        
+        [data-ux-cta-type=secondary].ux-cta-link,
+        [data-ux-cta-type=tertiary].ux-cta-link {
+            color: #06c;
+            font-weight: 800;
+            font-family: Overpass, Helvetica, helvetica, arial, sans-serif;
+            text-decoration: none;
+        }
+        
+        [data-ux-theme~=light] [data-ux-cta-type=secondary].ux-cta-link,
+        [data-ux-theme~=light] [data-ux-cta-type=tertiary].ux-cta-link {
+            color: #06c;
+        }
+        
+        .ux-generic h3,
+        .ux-icon-panel-content h3,
+        .ux-video-embed-title {
+            font-family: Overpass, Helvetica, helvetica, arial, sans-serif;
+            font-size: 1.22em;
+            font-weight: 800;
+            color: #252527;
+            margin-top: 0px;
+            margin-bottom: 0.45em;
+            line-height: 1.18;
+        }
+        
+        .ux-generic p,
+        .ux-icon-panel-content p {
+            display: block;
+            font-family: Overpass, Helvetica, helvetica, arial, sans-serif;
+            font-size: 1em;
+            font-weight: 400;
+            line-height: 1.44;
+            margin: 0 0 1em;
+            color: #646464;
+        }
+        
+        .ux-generic> :last-child {
+            margin-bottom: 0px;
+        }
+        
+        .ux-generic p:last-child,
+        .ux-icon-panel-content p:last-child {
+            margin-bottom: 0px;
+        }
+        
+        .ux-card-header--component> :last-child,
+        .ux-card-header> :last-child {
+            margin-bottom: 0px;
+        }
+        
+        [data-ux-align=bleed] .ux-image-embed-container {
+            margin-left: -30px;
+            margin-right: -30px;
+        }
+        
+        [data-ux-align=bleed] .ux-image-embed-container {
+            background: inherit;
+        }
+        
+        .ux-card .ux-video-embed-media-container,
+        [data-ux-align=bleed]:first-child .ux-image-embed-container {
+            margin-top: -30px;
+            margin-left: -30px;
+            margin-right: -30px;
+        }
+        
+        [data-ux-align=bleed]:first-child .ux-image-embed-container {
+            background: inherit;
+        }
+        
+        .ux-video-embed-poster-image,
+        [data-ux-align=bleed] .ux-image-embed-container .media-element-container img,
+        [data-ux-align=bleed] .ux-image-embed-img,
+        [data-ux-align=full] .ux-image-embed-container .media-element-container img,
+        [data-ux-align=full] .ux-image-embed-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        [data-ux-img-hover=color-bw] .ux-image-embed-container .media-element-container img,
+        [data-ux-img-hover=color-bw] .ux-image-embed-img {
+            transition: all .2s ease;
+            -webkit-filter: grayscale(0);
+            filter: grayscale(0);
+        }
+        
+        .ux-image-embed-container .media-element-container img,
+        .ux-image-embed-img {
+            max-width: 100%;
+            display: block;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body class="bands-index html not-front not-logged-in no-sidebars page-node page-node- page-node-250861 node-type-pattern-template i18n-zh about-our-brand  redhat_www_menu-processed redhat_www_solr_suggestions-processed is-mobile-footer is-mobile-utility">
+    <div class="page">
+        <div id="main-content">
+            <div class="region region-content">
+                <div class="block block-system" id="block-system-main">
+                    <article class="node-250861 node node-pattern-template clearfix">
+                        <div class="rh-raw" data-rh-unique-id="222871">
+                            <section class="ux-band" data-ux-band-background="corporate-angle-red">
+                                <div class="ux-band-container">
+                                    <div class="ux-band-body" data-ux-layout="4 4 4 flex">
+                                        <div class="ux-card" data-ux-theme="light" data-ux-justify="justify">
+                                            <div class="ux-card-header">
+                                                <div class="ux-image-embed" data-ux-align="bleed" data-ux-img-hover="color-bw">
+                                                    <div class="ux-image-embed-container">
+                                                        <a href="/zh/open-source-stories/colab">
+                                                            <div class="media media-element-container media-default"><img width="600" height="300" title="CO.LAB girls walking together" class="media-element file-default ux-image-embed-img" alt="CO.LAB girls walking together" src="https://www.redhat.com/cms/managed-files/colab-girls-on-computer-600x300.jpg"></div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ux-card-body">
+                                                <div class="ux-generic">
+                                                    <h3>CO.LAB</h3>
+                                                    <p>我们帮助 25 个女孩制作了属于她们自己的数码相机。她们则帮助我们以全新的方式来观察这个世界。</p>
+                                                </div>
+                                            </div>
+                                            <div class="ux-card-footer">
+                                                <div class="ux-cta"><a class="ux-cta-link" href="/zh/open-source-stories/colab" data-ux-cta-type="secondary">看看她们的视角</a> </div>
+                                            </div>
+                                        </div>
+                                        <div class="ux-card" data-ux-theme="light" data-ux-justify="justify">
+                                            <div class="ux-card-header">
+                                                <div class="ux-image-embed" data-ux-align="bleed" data-ux-img-hover="color-bw">
+                                                    <div class="ux-image-embed-container">
+                                                        <a href="/zh/summit/2017/sponsors/interest">
+                                                            <div class="media media-element-container media-default"><img width="600" height="300" title="People-powered billboard" class="media-element file-default ux-image-embed-img" alt="People-powered billboard" src="https://www.redhat.com/cms/managed-files/people-powered-billboard-600x300.jpg"></div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ux-card-body">
+                                                <div class="ux-generic">
+                                                    <h3>人力布告板</h3>
+                                                    <p>当人们聚在一起时，他们就能传达强有力的讯息。一字一句，准确无误。</p>
+                                                </div>
+                                            </div>
+                                            <div class="ux-card-footer">
+                                                <div class="ux-cta"><a class="ux-cta-link" href="/zh/summit/2017/sponsors/interest" data-ux-cta-type="secondary">查看他们的讯息</a> </div>
+                                            </div>
+                                        </div>
+                                        <div class="ux-card" data-ux-theme="light" data-ux-justify="justify">
+                                            <div class="ux-card-header" data-ux-layout="stacked">
+                                                <div class="ux-image-embed" data-ux-align="bleed" data-ux-img-hover="color-bw">
+                                                    <div class="ux-image-embed-container">
+                                                        <a href="/zh/open-source-stories">
+                                                            <div class="media media-element-container media-default"><img width="600" height="300" title="Open source stories filming" class="media-element file-default ux-image-embed-img" alt="Open source stories filming" src="https://www.redhat.com/cms/managed-files/open-source-stories-filming-600x300.jpg"></div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ux-card-body">
+                                                <div class="ux-generic">
+                                                    <h3>开源故事</h3>
+                                                    <p>从艺术到人工智能，开源正在改变这个世界。</p>
+                                                </div>
+                                            </div>
+                                            <div class="ux-card-footer">
+                                                <div class="ux-cta"><a class="ux-cta-link" href="/zh/open-source-stories" data-ux-cta-type="secondary">探索开源故事</a> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

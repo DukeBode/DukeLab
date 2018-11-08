@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        let url = 'https://www.yiban.cn/forum/article/listAjax';
+        // let data = {
+        //     channel_id: 55461,
+        //     group_id: 0,
+        //     my: 0,
+        //     need_notice: 0,
+        //     orderby: 'updateTime',
+        //     page: 1,
+        //     puid: 5189448,
+        //     Sections_id: -1,
+        //     size: 20
+        // };
+        fetch('http://www.nmc.cn/f/rest/province', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': 'localhost'
+                },
+                module: 'no-cors'
+            })
+            .then(response => response.json())
+            .then(data => {
+                // data就是我们请求的repos
+                console.log(data)
+            });
+    </script>
+</body>
+
+</html>

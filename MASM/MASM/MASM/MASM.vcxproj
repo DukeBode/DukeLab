@@ -81,6 +81,9 @@
     <Link>
       <SubSystem>Console</SubSystem>
     </Link>
+    <MASM>
+      <EnableMASM51Compatibility>true</EnableMASM51Compatibility>
+    </MASM>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
