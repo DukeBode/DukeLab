@@ -6,5 +6,5 @@ Django
 idna==2.7
 Pillow==5.2.0
 pytz==2018.4
-requests==2.19.1
+requests
 urllib3==1.23
