@@ -51,10 +51,10 @@ yum install
     `pip3 install -r requirements`
 1. 同步数据库、建立管理员账号、同步静态文件
     ```shell
-python36 manage.py makemigrations
-python36 manage.py migrate
-python36 manage.py createsuperuser
-python36 manage.py collectstatic
+    python36 manage.py makemigrations
+    python36 manage.py migrate
+    python36 manage.py createsuperuser
+    python36 manage.py collectstatic
     ```
 1. 测试
     `python36 manage.py runserver 172.18.173.34:80`
@@ -73,12 +73,3 @@ nginx -t
 netstat -lnp
 kill -9
 uwsgi uwsgi.ini
-
-python37
-dnf -y groupinstall "Development Tools"
-dnf -y install openssl-devel zlib-devel bzip2-devel sqlite-devel readline-devel libffi-devel systemtap-sdt-devel
-wget
-tar zvxf
-cd
-./configure --help
-./configure --prefix=/usr/local/python3.7 --enable-optimizations
