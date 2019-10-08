@@ -1,8 +1,0 @@
-{
-  "name": "Echat",
-  "version": "0.0.1",
-  "description": "E chat bot",
-  "main": "app.js",
-  "author": "Duke",
-  "license": "MIT"
-}
