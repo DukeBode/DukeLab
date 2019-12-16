@@ -263,3 +263,5 @@ __pycache__/
 Python/dukestudio/web/venv/
 /.metadata/
 /.recommenders/
+
+**/jquery.min.js
