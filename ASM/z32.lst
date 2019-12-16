@@ -1,0 +1,65 @@
+Microsoft (R) Macro Assembler Version 14.15.26732.1	    11/20/18 21:25:46
+z32.asm							     Page 1 - 1
+
+
+ 0000				CODE	SEGMENT
+				ORG	100H
+				ASSUME	CS:CODE,DS:CODE
+ 0100  EB 14			MAIN:	JMP	START
+ 0102 1234 5673 7FFF 8000	ARRAY	DW	1234H,5673H,7FFFH,8000H,0DFFH
+       0DFF
+ 010C  0AB5 0369 005F		DW	0AB5H,0369H,005FH,5634H,9069H
+       5634 9069
+ 0116 = 0014			COUNT	EQU	$-ARRAY
+ 0116  B9 0014			START:	MOV	CX,COUNT
+ 0119  D1 E9			SHR	CX,1
+ 011B  49			DEC	CX
+ 011C  B3 FF			MOV	BL,-1
+ 011E  8B D1			AGAIN:	MOV	DX,CX
+ 0120  22 DB			AND	BL,BL
+ 0122  74 1F			JE	EXIT
+ 0124  32 DB			XOR	BL,BL
+ 0126  33 F6			XOR	SI,SI
+ 0128  8B 84 0102 R		AGAIN1:	MOV	AX,ARRAY[SI]
+ 012C  3B 84 0104 R		CMP	AX,ARRAY[SI+2]
+ 0130  7E 0A			JLE	NCHG
+ 0132  87 84 0104 R		XCHG	ARRAY[SI+2],AX
+ 0136  89 84 0102 R		MOV	ARRAY[SI],AX
+ 013A  B3 FF			MOV	BL,-1
+ 013C  46			NCHG:	INC	SI
+ 013D  46			INC	SI
+ 013E  4A			DEC	DX
+ 013F  75 E7			JNZ	AGAIN1
+ 0141  E2 DB			LOOP	AGAIN
+ 0143  CD 20			EXIT:	INT	20H
+ 0145				CODE	ENDS
+				END	MAIN
+z32.asm(30) : warning A4023:with /coff switch, leading underscore required for start address : MAIN
+Microsoft (R) Macro Assembler Version 14.15.26732.1	    11/20/18 21:25:46
+z32.asm							     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+CODE . . . . . . . . . . . . . .	16 Bit	 0145	  	  Private 
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+AGAIN1 . . . . . . . . . . . . .	L Near	 0128	  CODE	
+AGAIN  . . . . . . . . . . . . .	L Near	 011E	  CODE	
+ARRAY  . . . . . . . . . . . . .	Word	 0102	  CODE	
+COUNT  . . . . . . . . . . . . .	Number	 0014h	 
+EXIT . . . . . . . . . . . . . .	L Near	 0143	  CODE	
+MAIN . . . . . . . . . . . . . .	L Near	 0100	  CODE	Public
+NCHG . . . . . . . . . . . . . .	L Near	 013C	  CODE	
+START  . . . . . . . . . . . . .	L Near	 0116	  CODE	
+
+	   1 Warnings
+	   0 Errors

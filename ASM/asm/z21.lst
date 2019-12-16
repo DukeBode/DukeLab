@@ -1,0 +1,77 @@
+Microsoft (R) Macro Assembler Version 14.15.26732.1	    11/20/18 21:24:02
+z21.asm							     Page 1 - 1
+
+
+ 0000				DATA	SEGMENT
+ 0000 54 48 49 53 20 49		MESSAGE	DB	'THIS IS A SAMPLE PROGRAM OF KEYBOARD AND DISPLAY'
+       53 20 41 20 53 41
+       4D 50 4C 45 20 50
+       52 4F 47 52 41 4D
+       20 4F 46 20 4B 45
+       59 42 4F 41 52 44
+       20 41 4E 44 20 44
+       49 53 50 4C 41 59
+ 0030  0D 0A 50 4C 45 41	DB	0DH,0AH,'PLEASE STRIKE THE KEY!',0DH,0AH,'$'
+       53 45 20 53 54 52
+       49 4B 45 20 54 48
+       45 20 4B 45 59 21
+       0D 0A 24
+ 004B				DATA	ENDS
+ 0000				STACK	SEGMENT	PARA STACK 'STACK'
+ 0000  0032 [			DB	50 DUP(?)
+        00
+       ]
+ 0032				STACK	ENDS
+ 0000				CODE	SEGMENT
+				ASSUME	CS:CODE,DS:DATA,SS:STACK
+ 0000  B8 ---- R		START:	MOV	AX,DATA
+z21.asm(10) : error A2004:symbol type conflict
+ 0003  8E D8			MOV	DS,AX
+ 0005  BA 0000 R		MOV	DX,OFFSET MESSAGE
+ 0008  B4 09			MOV	AH,9
+ 000A  CD 21			INT	21H
+ 000C  B4 01			AGAIN:	MOV	AH,1
+ 000E  CD 21			INT	21H
+ 0010  3C 1B			CMP	AL,1BH
+ 0012  74 12			JE	EXIT
+ 0014  3C 61			CMP	AL,61H
+ 0016  72 06			JC	ND
+ 0018  3C 7A			CMP	AL,7AH
+ 001A  77 02			JA	ND
+ 001C  24 DF			AND	AL,11011111B
+ 001E  8A D0			ND:	MOV	DL,AL
+ 0020  B4 02			MOV	AH,2
+ 0022  CD 21			INT	21H
+ 0024  EB E6			JMP	AGAIN
+ 0026  B4 4C			EXIT:	MOV	AH,4CH
+ 0028  CD 21			INT	21H
+ 002A				CODE	ENDS
+				END	START
+z21.asm(31) : warning A4023:with /coff switch, leading underscore required for start address : START
+Microsoft (R) Macro Assembler Version 14.15.26732.1	    11/20/18 21:24:02
+z21.asm							     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+CODE . . . . . . . . . . . . . .	16 Bit	 002A	  	  Private 
+DATA . . . . . . . . . . . . . .	16 Bit	 004B	  	  Private 
+STACK  . . . . . . . . . . . . .	16 Bit	 0032	  Para	  Stack	  'STACK'	 
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+AGAIN  . . . . . . . . . . . . .	L Near	 000C	  CODE	
+EXIT . . . . . . . . . . . . . .	L Near	 0026	  CODE	
+MESSAGE  . . . . . . . . . . . .	Byte	 0000	  DATA	
+ND . . . . . . . . . . . . . . .	L Near	 001E	  CODE	
+START  . . . . . . . . . . . . .	L Near	 0000	  CODE	Public
+
+	   1 Warnings
+	   1 Errors

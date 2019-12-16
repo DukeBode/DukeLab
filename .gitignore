@@ -261,3 +261,5 @@ __pycache__/
 *.pyc
 /php/php/nbproject/private/
 Python/dukestudio/web/venv/
+/.metadata/
+/.recommenders/

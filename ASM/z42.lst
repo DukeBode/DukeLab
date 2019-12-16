@@ -1,0 +1,75 @@
+Microsoft (R) Macro Assembler Version 14.15.26732.1	    11/20/18 21:24:45
+z42.asm							     Page 1 - 1
+
+
+ 0000				STACK	SEGMENT STACK
+ 0000  0100 [			DB	100H DUP(?)
+        00
+       ]
+ 0100				STACK	ENDS
+ 0000				DATA	SEGMENT
+ 0000 0000			RESUL	DW	?
+ 0002				DATA	ENDS
+ 0000				CODE	SEGMENT
+ 0000				MAIN	PROC	FAR
+				ASSUME	CS:CODE,DS:DATA,SS:STACK
+ 0000  1E			START:	PUSH	DS
+ 0001  2B C0			SUB	AX,AX
+ 0003  50			PUSH	AX
+ 0004  B8 ---- R		MOV	AX,DATA
+z42.asm(13) : error A2004:symbol type conflict
+ 0007  8E D8			MOV	DS,AX
+ 0009  B8 0005			MOV	AX,5
+ 000C  E8 0004			CALL	FACT
+ 000F  A3 0000 R		MOV	RESUL,AX
+ 0012  CB			RET
+ 0013				FACT	PROC
+ 0013  22 C0			AND	AL,AL
+ 0015  75 03			JNE	IIA
+ 0017  B0 01			MOV	AL,1
+ 0019  C3			RET
+ 001A  50			IIA:	PUSH	AX
+ 001B  FE C8			DEC	AL
+ 001D  E8 FFF3			CALL	FACT
+ 0020  59			X2:	POP	CX
+ 0021  F6 E1			MUL	CL
+ 0023  C3			RET
+ 0024				FACT	ENDP
+ 0024				MAIN	ENDP
+ 0024				CODE	ENDS
+				END	START
+z42.asm(33) : warning A4023:with /coff switch, leading underscore required for start address : START
+Microsoft (R) Macro Assembler Version 14.15.26732.1	    11/20/18 21:24:45
+z42.asm							     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+CODE . . . . . . . . . . . . . .	16 Bit	 0024	  	  Private 
+DATA . . . . . . . . . . . . . .	16 Bit	 0002	  	  Private 
+STACK  . . . . . . . . . . . . .	16 Bit	 0100	  	  Stack	  
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+FACT . . . . . . . . . . . . . .	P Near	 0013	  CODE	Length= 0011 Private
+MAIN . . . . . . . . . . . . . .	P Far	 0000	  CODE	Length= 0024 Private
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+IIA  . . . . . . . . . . . . . .	L Near	 001A	  CODE	
+RESUL  . . . . . . . . . . . . .	Word	 0000	  DATA	
+START  . . . . . . . . . . . . .	L Near	 0000	  CODE	Public
+X2 . . . . . . . . . . . . . . .	L Near	 0020	  CODE	
+
+	   1 Warnings
+	   1 Errors

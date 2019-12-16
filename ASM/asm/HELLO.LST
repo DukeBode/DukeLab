@@ -1,0 +1,53 @@
+Microsoft (R) Macro Assembler Version 5.00                  11/24/18 17:55:50
+                                                             Page     1-1
+
+
+       1				 
+       2				.386 
+       3				.model flat, stdcall 
+       4				option casemap :none 
+HELLO.ASM(4): error A2105: Expected: instruction or directive
+       5 0000				.data 
+       6 0000  48 65 6C 6C 6F 20 57	HelloWorld db "Hello World!", 0 
+       7       6F 72 6C 64 21 00	
+       8 0000				.code 
+       9 0000				start: 
+      10				invoke StdOut, addr HelloWorld 
+HELLO.ASM(9): error A2105: Expected: instruction or directive
+      11				invoke ExitProcess, 0 
+HELLO.ASM(10): error A2105: Expected: instruction or directive
+      12 0000				end start 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/18 17:55:50
+                                                             Symbols-1
+
+
+
+
+                N a m e         	Size	Length	 Align	Combine Class
+
+DGROUP . . . . . . . . . . . . .  	GROUP
+  _DATA  . . . . . . . . . . . .  	32 Bit	000D	DWORD	PUBLIC	'DATA'
+_TEXT  . . . . . . . . . . . . .  	32 Bit	0000	DWORD	PUBLIC	'CODE'
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+HELLOWORLD . . . . . . . . . . .  	L BYTE	0000	_DATA
+
+START  . . . . . . . . . . . . .  	L NEAR	0000	_TEXT
+
+@CODE  . . . . . . . . . . . . .  	TEXT  _TEXT		
+@CODESIZE  . . . . . . . . . . .  	TEXT  0		
+@DATASIZE  . . . . . . . . . . .  	TEXT  0		
+@FILENAME  . . . . . . . . . . .  	TEXT  HELLO		
+
+
+     11 Source  Lines
+     11 Total   Lines
+     15 Symbols
+
+  50660 + 465884 Bytes symbol space free
+
+      0 Warning Errors
+      3 Severe  Errors

@@ -1,4 +1,4 @@
-var request = require('request');
+import request from 'request';
  
 // var url='http://www.gsut.edu.cn/';
 //通过GET请求来获取网站内容
@@ -36,26 +36,3 @@ request({
         console.log(jsonOBJ.data)
     }
 })
-
-//易班接口
-define('TOKEN', 'yiban');
-
-$yibanUrlObj = new Yiban_URL_VALIDATE();
-$yibanUrlObj.valid();
-
-
-class Yiban_URL_VALIDATE{
-    valid()
-    {
-        checkSignature() ? $_GET["echostr"] : '';
-        exit;
-    }
-    
-    checkSignature()
-    {
-		$tmpArr = array(TOKEN, $_GET['timestamp'], $_GET['nonce']);
-		sort($tmpArr, SORT_STRING);
-        
-        return sha1(implode($tmpArr)) == $_GET['signature'];
-    }
-}

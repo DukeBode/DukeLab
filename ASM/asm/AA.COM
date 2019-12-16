@@ -1,0 +1,1 @@
+¥	∫Õ!Õ äàFG‚This is a sampale!$

@@ -1,0 +1,165 @@
+Microsoft (R) Macro Assembler Version 14.15.26732.1	    11/20/18 21:24:10
+z31.asm							     Page 1 - 1
+
+
+				DISP	MACRO	MSG
+				LEA	DX,MSG
+				MOV	AH,9
+				INT	21H
+				MOV	AH,4CH
+				INT	21H
+				ENDM
+ 0000				STACK	SEGMENT	STACK
+ 0000  0100 [			DB	256 DUP(0)
+        00
+       ]
+ 0100				STACK	ENDS
+ 0000				DATA	SEGMENT
+ 0000  0010 [			PARM	DB	16 DUP(?)
+        00
+       ]
+ 0010 003D R 0049 R 0055 R	BRTABLE	DW	OFFSET BRA,OFFSET BRB,OFFSET BRC
+ 0016  0061 R 006D R 0079 R	DW	OFFSET BRD,OFFSET BRE,OFFSET BRF
+ 001C 49 20 4C 49 4B 45		MSGA	DB	'I LIKE MY IBM-PC!$'
+       20 4D 59 20 49 42
+       4D 2D 50 43 21 24
+ 002E 48 4F 57 20 41 52		MSGB	DB	'HOW ARE YOU!$'
+       45 20 59 4F 55 21
+       24
+ 003B 4E 49 42 41 4F 20		MSGC	DB	'NIBAO COLLEGE$'
+       43 4F 4C 4C 45 47
+       45 24
+ 0049 54 48 49 53 20 49		MSGD	DB	'THIS IS A SAMPLE$'
+       53 20 41 20 53 41
+       4D 50 4C 45 24
+ 005A 57 45 4C 4C 43 4F		MSGE	DB	'WELLCOME USE MY COPUTER!$'
+       4D 45 20 55 53 45
+       20 4D 59 20 43 4F
+       50 55 54 45 52 21
+       24
+ 0073 54 48 45 20 41 53		MSGF	DB	'THE ASSEMBLER LANGUAGE OF 8088$'
+       53 45 4D 42 4C 45
+       52 20 4C 41 4E 47
+       55 41 47 45 20 4F
+       46 20 38 30 38 38
+       24
+ 0092 45 52 52 4F 52 21		ERRMS	DB	'ERROR!! INVALID PARAMETER!!$'
+       21 20 49 4E 56 41
+       4C 49 44 20 50 41
+       52 41 4D 45 54 45
+       52 21 21 24
+ 00AE				DATA	ENDS
+ 0000				CODE	SEGMENT
+				ASSUME	CS:CODE,DS:DATA,SS:STACK
+ 0000  B8 ---- R		START:	MOV	AX,DATA
+z31.asm(25) : error A2004:symbol type conflict
+ 0003  8E C0			MOV	ES,AX
+ 0005  BE 0080			MOV	SI,80H
+ 0008  8D 3E 0000 R		LEA	DI,PARM
+ 000C  B9 0010			MOV	CX,16
+ 000F  FC			CLD
+ 0010  F3/ A4			REP	MOVSB
+ 0012  8E D8			MOV	DS,AX
+ 0014  80 3E 0000 R 02		CMP	PARM,2
+ 0019  72 16			JC	ERR
+ 001B  A0 0002 R		MOV	AL,PARM+2
+ 001E  2C 30			SUB	AL,30H
+ 0020  72 0F			JC	ERR
+ 0022  3C 06			CMP	AL,6
+ 0024  73 0B			JNC	ERR
+ 0026  8D 1E 0010 R		LEA	BX,BRTABLE
+ 002A  98			CBW
+ 002B  03 C0			ADD	AX,AX
+ 002D  03 D8			ADD	BX,AX
+ 002F  FF 27			JMP	[BX]
+ 0031				ERR:	DISP	ERRMS
+ 0031  8D 16 0092 R	     1	LEA	DX,ERRMS
+ 0035  B4 09		     1	MOV	AH,9
+ 0037  CD 21		     1	INT	21H
+ 0039  B4 4C		     1	MOV	AH,4CH
+ 003B  CD 21		     1	INT	21H
+ 003D				BRA:	DISP	MSGA
+ 003D  8D 16 001C R	     1	LEA	DX,MSGA
+ 0041  B4 09		     1	MOV	AH,9
+ 0043  CD 21		     1	INT	21H
+ 0045  B4 4C		     1	MOV	AH,4CH
+ 0047  CD 21		     1	INT	21H
+ 0049				BRB:	DISP	MSGB
+ 0049  8D 16 002E R	     1	LEA	DX,MSGB
+ 004D  B4 09		     1	MOV	AH,9
+ 004F  CD 21		     1	INT	21H
+ 0051  B4 4C		     1	MOV	AH,4CH
+ 0053  CD 21		     1	INT	21H
+ 0055				BRC:	DISP	MSGC
+ 0055  8D 16 003B R	     1	LEA	DX,MSGC
+ 0059  B4 09		     1	MOV	AH,9
+ 005B  CD 21		     1	INT	21H
+ 005D  B4 4C		     1	MOV	AH,4CH
+ 005F  CD 21		     1	INT	21H
+ 0061				BRD:	DISP	MSGD
+ 0061  8D 16 0049 R	     1	LEA	DX,MSGD
+ 0065  B4 09		     1	MOV	AH,9
+ 0067  CD 21		     1	INT	21H
+ 0069  B4 4C		     1	MOV	AH,4CH
+ 006B  CD 21		     1	INT	21H
+ 006D				BRE:	DISP	MSGE
+ 006D  8D 16 005A R	     1	LEA	DX,MSGE
+ 0071  B4 09		     1	MOV	AH,9
+ 0073  CD 21		     1	INT	21H
+ 0075  B4 4C		     1	MOV	AH,4CH
+ 0077  CD 21		     1	INT	21H
+ 0079				BRF:	DISP	MSGF
+ 0079  8D 16 0073 R	     1	LEA	DX,MSGF
+ 007D  B4 09		     1	MOV	AH,9
+ 007F  CD 21		     1	INT	21H
+ 0081  B4 4C		     1	MOV	AH,4CH
+ 0083  CD 21		     1	INT	21H
+ 0085				CODE	ENDS
+				END	START
+z31.asm(53) : warning A4023:with /coff switch, leading underscore required for start address : START
+Microsoft (R) Macro Assembler Version 14.15.26732.1	    11/20/18 21:24:10
+z31.asm							     Symbols 2 - 1
+
+
+
+
+Macros:
+
+                N a m e                 Type
+
+DISP . . . . . . . . . . . . . .	Proc
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+CODE . . . . . . . . . . . . . .	16 Bit	 0085	  	  Private 
+DATA . . . . . . . . . . . . . .	16 Bit	 00AE	  	  Private 
+STACK  . . . . . . . . . . . . .	16 Bit	 0100	  	  Stack	  
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+BRA  . . . . . . . . . . . . . .	L Near	 003D	  CODE	
+BRB  . . . . . . . . . . . . . .	L Near	 0049	  CODE	
+BRC  . . . . . . . . . . . . . .	L Near	 0055	  CODE	
+BRD  . . . . . . . . . . . . . .	L Near	 0061	  CODE	
+BRE  . . . . . . . . . . . . . .	L Near	 006D	  CODE	
+BRF  . . . . . . . . . . . . . .	L Near	 0079	  CODE	
+BRTABLE  . . . . . . . . . . . .	Word	 0010	  DATA	
+ERRMS  . . . . . . . . . . . . .	Byte	 0092	  DATA	
+ERR  . . . . . . . . . . . . . .	L Near	 0031	  CODE	
+MSGA . . . . . . . . . . . . . .	Byte	 001C	  DATA	
+MSGB . . . . . . . . . . . . . .	Byte	 002E	  DATA	
+MSGC . . . . . . . . . . . . . .	Byte	 003B	  DATA	
+MSGD . . . . . . . . . . . . . .	Byte	 0049	  DATA	
+MSGE . . . . . . . . . . . . . .	Byte	 005A	  DATA	
+MSGF . . . . . . . . . . . . . .	Byte	 0073	  DATA	
+PARM . . . . . . . . . . . . . .	Byte	 0000	  DATA	
+START  . . . . . . . . . . . . .	L Near	 0000	  CODE	Public
+
+	   1 Warnings
+	   1 Errors
